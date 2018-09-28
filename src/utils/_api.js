@@ -13,20 +13,31 @@ const headers = {
 }
 
 // entrypoints
-export const getAllCategories = () =>
+export const getCategories = () =>
   fetch(`${api}/categories`, { headers })
     .then(res => res.json())
     .then(data => data)
 
-export const getAllPost = () =>
+export const getPost = () =>
   fetch(`${api}/posts`, { headers })
     .then(res => res.json())
     .then(data => data)
 
+export function getInitialData() {
+  return Promise.all([
+    getCategories(),
+    getPost(),
+  ]).then(([categories, posts]) => ({
+    categories,
+    posts,
+  }))
+}
+
+
 // app.post('/comments/:id', bodyParser.json(), (req, res) => {
 // const { option } = req.body
 // comments.vote(req.token, req.params.id, option)
-    // .then(
+// .then(
 // data => res.send(data),
 // (error) => {
 // console.error(error)
@@ -34,7 +45,7 @@ export const getAllPost = () =>
 // error: 'There was an error.',
 // })
 // },
-    // )
+// )
 // })
 
 export const add = comment =>

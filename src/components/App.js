@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
-import { handleTemplate } from '../actions/template'
 // conpoments
 import Home from '../components/Home'
 import Header from '../components/Header'
@@ -22,13 +21,13 @@ import * as api from '../utils/_api'
 class App extends Component {
   componentDidMount() {
     const { dispatch } = this.props
-    // dispatch(handleInitialData())
+    dispatch(handleInitialData())
   }
   render() {
-    api.getAllCategories()// fetchind the data from remote server
+    api.getCategories()// fetchind the data from remote server
       .then(response => console.log(response))
 
-    api.getAllPost()
+    api.getPost()
       .then((c) => {
         console.log(c)
       })
@@ -44,18 +43,24 @@ class App extends Component {
       // parentDeleted: false,
     // }
     // api.add(newComment)
-      // .then((c) => {
-    // console.log(c)
+      // .then((c, e) => {
+    // console.log(c, e)
       // })
       // .catch(err => console.log(err))
 
-    // login id === nulll in handleInitialData()
-    // if (this.props.color === undefined) {
-    // this.props.dispatch(handleTemplate(templateBootstrap()))
+    // export function getInitialData() {
+      // return Promise.all([
+    // getCategories(),
+    // getPost(),
+      // ]).then(([users, questions]) => ({
+    // users,
+    // questions,
+      // }))
     // }
-    // if (this.props.authedUser === null) { // user is not logged launch the modal
-    // return <Modal buttonLabel="open" />
-    // }
+
+    api.getInitialData()
+      .then(res => console.log(res))
+
     return (
       <Router basename="">
         <Fragment>
