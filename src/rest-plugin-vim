@@ -1,0 +1,4 @@
+http://localhost:3001
+GET /categories
+Accept: 'application/json',
+Authorization: Basic,
