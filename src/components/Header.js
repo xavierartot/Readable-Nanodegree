@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { NavLink, Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 // import { Button } from 'styled-components'
-import { NavBrand, HeaderNav } from '../css/Styled'
+import { NavBrand, HeaderNav, NavLinkTop, NavLi } from '../css/Styled'
 
 
 class Header extends Component {
@@ -32,12 +32,14 @@ class Header extends Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
+          <NavLinkTop className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               {
                       Array.isArray(categories) && (
-                        categories.map(cat => (
-                          <li className="nav-item">
+                        categories.map((cat, i) => (
+                          <li
+                            className="nav-item"
+                          >
                             <NavLink
                               activeClassName="active"
                               className="nav-link"
@@ -50,7 +52,7 @@ class Header extends Component {
                       )
                     }
             </ul>
-          </div>
+          </NavLinkTop>
         </nav>
       </HeaderNav>
     )
