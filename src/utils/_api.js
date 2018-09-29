@@ -33,6 +33,12 @@ export function getInitialData() {
   }))
 }
 
+    // api.add(newComment)
+      // .then((c, e) => {
+    // console.log(c, e)
+      // })
+      // .catch(err => console.log(err))
+
 
 // app.post('/comments/:id', bodyParser.json(), (req, res) => {
 // const { option } = req.body

@@ -1,0 +1,51 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+App	src/components/App.js	/^class App extends Component {$/;"	c
+CHANGE_TEMPLATE	src/actions/template.js	/^export const CHANGE_TEMPLATE = 'CHANGE_TEMPLATE'$/;"	n
+Categories	src/utils/_api.js	/^export const getCategories = () =>$/;"	c
+Header	src/components/Header.js	/^class Header extends Component {$/;"	c
+Home	src/components/Home.js	/^class Home extends Component {$/;"	c
+Localhost	src/registerServiceWorker.js	/^const isLocalhost = Boolean($/;"	c
+PageNotFound	src/components/PageNotFound.js	/^class PageNotFound extends Component {$/;"	c
+Post	src/utils/_api.js	/^export const getPost = () =>$/;"	c
+RECEIVE_CATEGORIES	src/actions/categories.js	/^export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES'$/;"	n
+RECEIVE_POSTS	src/actions/posts.js	/^export const RECEIVE_POSTS = 'RECEIVE_POSTS'$/;"	n
+Types	src/components/Home.js	/^  static propTypes = {$/;"	c
+categories	src/reducers/categories.js	/^export default function categories(state = {}, action) {$/;"	f
+categoriesAction	src/actions/categories.js	/^export function categoriesAction(categories) {$/;"	f
+changeTemplate	src/actions/template.js	/^export function changeTemplate(color) {$/;"	f
+checkValidServiceWorker	src/registerServiceWorker.js	/^function checkValidServiceWorker(swUrl) {$/;"	f
+componentDidMount	src/components/App.js	/^  componentDidMount() {$/;"	f
+componentDidMount	src/components/Home.js	/^  componentDidMount() {$/;"	f
+font	src/css/variables.js	/^export const font: {$/;"	o
+getInitialData	src/utils/_api.js	/^export function getInitialData() {$/;"	f
+handleInitialData	src/actions/shared.js	/^export function handleInitialData() { \/\/ middleware thunk$/;"	f
+handleTemplate	src/actions/template.js	/^export function handleTemplate(color) {$/;"	f
+headers	src/utils/_api.js	/^    headers: {$/;"	o
+if	src/registerServiceWorker.js	/^            if (navigator.serviceWorker.controller) {$/;"	f
+if	src/registerServiceWorker.js	/^          if (installingWorker.state === 'installed') {$/;"	f
+if	src/registerServiceWorker.js	/^      if (isLocalhost) {$/;"	f
+if	src/registerServiceWorker.js	/^    if (publicUrl.origin !== window.location.origin) {$/;"	f
+if	src/registerServiceWorker.js	/^  if ('serviceWorker' in navigator) {$/;"	f
+if	src/registerServiceWorker.js	/^  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {$/;"	f
+if	src/utils/_api.js	/^if (!token) { token = localStorage.token = Math.random().toString(36).substr(-8) }$/;"	f
+mapStateToProps	src/components/App.js	/^function mapStateToProps(state, props) {$/;"	f
+mapStateToProps	src/components/Home.js	/^function mapStateToProps(state) {$/;"	f
+palette	src/css/variables.js	/^export const palette: {$/;"	o
+receivePosts	src/actions/posts.js	/^export function receivePosts(posts) {$/;"	f
+receivePosts	src/reducers/posts.js	/^export default function receivePosts(state = {}, action) {$/;"	f
+register	src/registerServiceWorker.js	/^export default function register() {$/;"	f
+registerValidSW	src/registerServiceWorker.js	/^function registerValidSW(swUrl) {$/;"	f
+render	src/components/App.js	/^  render() {$/;"	f
+render	src/components/Header.js	/^  render() {$/;"	f
+render	src/components/Home.js	/^  render() {$/;"	f
+render	src/components/PageNotFound.js	/^  render() {$/;"	f
+switch	src/reducers/categories.js	/^  switch (action.type) {$/;"	f
+switch	src/reducers/posts.js	/^  switch (action.type) {$/;"	f
+switch	src/reducers/template.js	/^  switch (action.type) {$/;"	f
+template	src/reducers/template.js	/^export default function template(state = {}, action) {$/;"	f
+unregister	src/registerServiceWorker.js	/^export function unregister() {$/;"	f

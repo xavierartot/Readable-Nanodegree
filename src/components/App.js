@@ -7,16 +7,14 @@ import {
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 // conpoments
-import Home from '../components/Home'
-import Header from '../components/Header'
-import Add from '../components/Add'
-import PageNotFound from '../components/PageNotFound'
-import Modal from '../components/Modal'
-import Question from '../components/Question'
+import Home from './Home'
+import Header from './Header'
+// import Add from './Add'
+import PageNotFound from './PageNotFound'
+import Modal from './Modal'
+import Question from './Question'
 
-// API
-import * as api from '../utils/_api'
-
+import 'bootstrap/dist/css/bootstrap.css'
 
 class App extends Component {
   componentDidMount() {
@@ -24,49 +22,13 @@ class App extends Component {
     dispatch(handleInitialData())
   }
   render() {
-    api.getCategories()// fetchind the data from remote server
-      .then(response => console.log(response))
-
-    api.getPost()
-      .then((c) => {
-        console.log(c)
-      })
-
-    // const newComment = {
-      // id: '894tuq4ut84ut8v4t8wun89g',
-      // parentId: '8xf0y6ziyjabvozdd253nd',
-      // timestamp: 1468166872634,
-      // body: 'Hi there! I am a COMMENT.',
-      // author: 'thingtwo',
-      // voteScore: 6,
-      // deleted: false,
-      // parentDeleted: false,
-    // }
-    // api.add(newComment)
-      // .then((c, e) => {
-    // console.log(c, e)
-      // })
-      // .catch(err => console.log(err))
-
-    // export function getInitialData() {
-      // return Promise.all([
-    // getCategories(),
-    // getPost(),
-      // ]).then(([users, questions]) => ({
-    // users,
-    // questions,
-      // }))
-    // }
-
-    api.getInitialData()
-      .then(res => console.log(res))
-
     return (
       <Router basename="">
         <Fragment>
           <Header />
           <Switch>
             <Route component={Home} exact path="/" />
+            <Route component={PageNotFound} />
           </Switch>
         </Fragment>
       </Router>
@@ -74,10 +36,11 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state, props) {
-  // console.log(template.color, template.background)
+function mapStateToProps({ categories, posts }, props) {
+  console.log(categories, posts)
   return {
-    state,
+    categories,
+    posts,
   }
 }
 export default connect(mapStateToProps)(App)
