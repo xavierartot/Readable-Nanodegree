@@ -8,6 +8,8 @@ import reducers from './reducers'
 import middlewares from './middlewares'
 import registerServiceWorker from './registerServiceWorker'
 
+import 'bootstrap/dist/css/bootstrap.css'
+
 const store = createStore(reducers, middlewares)
 
 ReactDOM.render(

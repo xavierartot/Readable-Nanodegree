@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import pullAll from 'lodash/pullAll'
-import classnames from 'classnames'
+// import PropTypes from 'prop-types'
+// import pullAll from 'lodash/pullAll'
 
 class Home extends Component {
   static propTypes = {
-  }
-  componentDidMount() {
-    // console.log(this.props.store.getState())
   }
   render() {
     return (

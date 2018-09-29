@@ -11,10 +11,8 @@ import Home from './Home'
 import Header from './Header'
 // import Add from './Add'
 import PageNotFound from './PageNotFound'
-import Modal from './Modal'
-import Question from './Question'
+import Page from './Page'
 
-import 'bootstrap/dist/css/bootstrap.css'
 
 class App extends Component {
   componentDidMount() {
@@ -22,12 +20,14 @@ class App extends Component {
     dispatch(handleInitialData())
   }
   render() {
+    // const { categories } = this.props
     return (
       <Router basename="">
         <Fragment>
           <Header />
           <Switch>
             <Route component={Home} exact path="/" />
+            <Route component={Page} path="/page/:id" />
             <Route component={PageNotFound} />
           </Switch>
         </Fragment>
@@ -36,11 +36,10 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ categories, posts }, props) {
-  console.log(categories, posts)
+function mapStateToProps({ categories, posts }) {
+  // console.log(categories, posts)
   return {
-    categories,
-    posts,
+    categories: categories.categories,
   }
 }
 export default connect(mapStateToProps)(App)
