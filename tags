@@ -7,21 +7,31 @@
 App	src/components/App.js	/^class App extends Component {$/;"	c
 CHANGE_TEMPLATE	src/actions/template.js	/^export const CHANGE_TEMPLATE = 'CHANGE_TEMPLATE'$/;"	n
 Categories	src/utils/_api.js	/^export const getCategories = () =>$/;"	c
+Click	src/components/Home.js	/^          <button onClick={() => this.date(postSorted)}>Date<\/button>$/;"	c
+Click	src/components/Home.js	/^          <button onClick={() => this.newPost(postSorted)} >add new post<\/button>$/;"	c
+Click	src/components/Home.js	/^          <button onClick={() => this.voteScore(postSorted)} >sort by vote score<\/button>$/;"	c
 Header	src/components/Header.js	/^class Header extends Component {$/;"	c
 Home	src/components/Home.js	/^class Home extends Component {$/;"	c
 Localhost	src/registerServiceWorker.js	/^const isLocalhost = Boolean($/;"	c
+Page	src/components/Page.js	/^class Page extends Component {$/;"	c
 PageNotFound	src/components/PageNotFound.js	/^class PageNotFound extends Component {$/;"	c
+Post	src/components/Home.js	/^  newPost = (postSorted) => {$/;"	c
 Post	src/utils/_api.js	/^export const getPost = () =>$/;"	c
 RECEIVE_CATEGORIES	src/actions/categories.js	/^export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES'$/;"	n
 RECEIVE_POSTS	src/actions/posts.js	/^export const RECEIVE_POSTS = 'RECEIVE_POSTS'$/;"	n
+Score	src/components/Home.js	/^  voteScore = (postSorted) => {$/;"	c
 Types	src/components/Home.js	/^  static propTypes = {$/;"	c
+author	src/components/Home.js	/^                author: {post.author}$/;"	o
+body	src/components/Home.js	/^                body: {post.body}$/;"	o
 categories	src/reducers/categories.js	/^export default function categories(state = {}, action) {$/;"	f
 categoriesAction	src/actions/categories.js	/^export function categoriesAction(categories) {$/;"	f
+category	src/components/Home.js	/^                category: {post.category}$/;"	o
 changeTemplate	src/actions/template.js	/^export function changeTemplate(color) {$/;"	f
 checkValidServiceWorker	src/registerServiceWorker.js	/^function checkValidServiceWorker(swUrl) {$/;"	f
+comment	src/components/Home.js	/^                number comment: {post.commentCount}$/;"	o
 componentDidMount	src/components/App.js	/^  componentDidMount() {$/;"	f
-componentDidMount	src/components/Home.js	/^  componentDidMount() {$/;"	f
-font	src/css/variables.js	/^export const font: {$/;"	o
+date	src/components/Home.js	/^                date: {formatDate(post.timestamp)}$/;"	o
+formatDate	src/utils/helpers.js	/^export function formatDate(timestamp) {$/;"	f
 getInitialData	src/utils/_api.js	/^export function getInitialData() {$/;"	f
 handleInitialData	src/actions/shared.js	/^export function handleInitialData() { \/\/ middleware thunk$/;"	f
 handleTemplate	src/actions/template.js	/^export function handleTemplate(color) {$/;"	f
@@ -33,9 +43,10 @@ if	src/registerServiceWorker.js	/^    if (publicUrl.origin !== window.location.o
 if	src/registerServiceWorker.js	/^  if ('serviceWorker' in navigator) {$/;"	f
 if	src/registerServiceWorker.js	/^  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {$/;"	f
 if	src/utils/_api.js	/^if (!token) { token = localStorage.token = Math.random().toString(36).substr(-8) }$/;"	f
-mapStateToProps	src/components/App.js	/^function mapStateToProps(state, props) {$/;"	f
-mapStateToProps	src/components/Home.js	/^function mapStateToProps(state) {$/;"	f
-palette	src/css/variables.js	/^export const palette: {$/;"	o
+mapStateToProps	src/components/App.js	/^function mapStateToProps({ categories, posts }) {$/;"	f
+mapStateToProps	src/components/Header.js	/^function mapStateToProps({ categories }, props) {$/;"	f
+mapStateToProps	src/components/Home.js	/^function mapStateToProps({ categories, posts }) {$/;"	f
+mapStateToProps	src/components/Page.js	/^function mapStateToProps({ state }, props) {$/;"	f
 receivePosts	src/actions/posts.js	/^export function receivePosts(posts) {$/;"	f
 receivePosts	src/reducers/posts.js	/^export default function receivePosts(state = {}, action) {$/;"	f
 register	src/registerServiceWorker.js	/^export default function register() {$/;"	f
@@ -43,9 +54,12 @@ registerValidSW	src/registerServiceWorker.js	/^function registerValidSW(swUrl) {
 render	src/components/App.js	/^  render() {$/;"	f
 render	src/components/Header.js	/^  render() {$/;"	f
 render	src/components/Home.js	/^  render() {$/;"	f
+render	src/components/Page.js	/^  render() {$/;"	f
 render	src/components/PageNotFound.js	/^  render() {$/;"	f
+score	src/components/Home.js	/^                vote score: {post.voteScore}$/;"	o
 switch	src/reducers/categories.js	/^  switch (action.type) {$/;"	f
 switch	src/reducers/posts.js	/^  switch (action.type) {$/;"	f
 switch	src/reducers/template.js	/^  switch (action.type) {$/;"	f
 template	src/reducers/template.js	/^export default function template(state = {}, action) {$/;"	f
+title	src/components/Home.js	/^                title: {post.title}$/;"	o
 unregister	src/registerServiceWorker.js	/^export function unregister() {$/;"	f

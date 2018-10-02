@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { NavLink, Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 // import { Button } from 'styled-components'
-import { NavBrand, HeaderNav, NavLinkTop, NavLi } from '../css/Styled'
+import { NavBrand, HeaderNav, NavLinkTop } from '../css/Styled'
 
 
 class Header extends Component {
@@ -12,9 +12,9 @@ class Header extends Component {
 
   render() {
     const { categories } = this.props
-    console.log(this.props)
+    // console.log(this.props)
     return (
-      <HeaderNav className="navbar navbar-expand-lg ">
+      <HeaderNav className="navbar navbar-expand-lg">
         <nav className="navbar navbar-expand-lg">
           <NavBrand>
             <Link className="navbar-brand" to="/">
@@ -38,6 +38,7 @@ class Header extends Component {
                       Array.isArray(categories) && (
                         categories.map((cat, i) => (
                           <li
+                            key={cat.path}
                             className="nav-item"
                           >
                             <NavLink
