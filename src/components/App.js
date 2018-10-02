@@ -12,6 +12,7 @@ import Header from './Header'
 // import Add from './Add'
 import PageNotFound from './PageNotFound'
 import Page from './Page'
+import NewPost from './NewPost'
 
 
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
           <Switch>
             <Route component={Home} exact path="/" />
             <Route component={Page} path="/page/:id" />
+            <Route component={NewPost} exact path="newpost" />
             <Route component={PageNotFound} />
           </Switch>
         </Fragment>

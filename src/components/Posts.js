@@ -10,10 +10,16 @@ import { formatDate } from '../utils/helpers'
 
 class posts extends Component {
   render() {
-    const { posts } = this.props
+    const { posts, sortedVoted } = this.props
+    let displayPosts = posts
+    console.log(sortedVoted)
+    if (sortedVoted !== null) {
+      displayPosts = sortedVoted
+    }
+    console.log(sortedVoted)
     return (
       <div className="posts">
-        {posts && posts.map(post => (
+        {displayPosts && displayPosts.map(post => (
           <ul key={post.id} className="list-group mb-3 col-auto">
             <li className="list-group-item">
                 date: {formatDate(post.timestamp)}

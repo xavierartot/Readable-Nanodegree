@@ -1,27 +1,61 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
+
 import { connect } from 'react-redux'
 import _ from 'lodash'
 // import { formatDate } from '../utils/helpers'
 import Posts from './Posts'
 // import PropTypes from 'prop-types'
 // import pullAll from 'lodash/pullAll'
+import { IoMdArrowUp, IoMdArrowDown } from 'react-icons/io'
+// import { MdPlaylistAddCheck } from 'react-icons/md'
 
 class Home extends Component {
   static propTypes = {
   }
   state = {
     sortedVoted: null,
+    toggleDate: true,
+    toggleScore: true,
   }
   date = (postSorted) => {
-    console.log(postSorted)
-    const t = _.sortBy(postSorted, postSorted.timestamp)
-    console.log(t)
+    const sort = _.sortBy(postSorted, postSorted.timestamp)
+    this.state.toggleDate === true
+      ? this.setState(() => ({
+        sortedVoted: sort,
+        toggleDate: false,
+      }))
+      : this.setState(() => ({
+        sortedVoted: sort.reverse(),
+        toggleDate: true,
+      }))
   }
   voteScore = (postSorted) => {
-    console.log(postSorted)
+    const sort = _.sortBy(postSorted, postSorted.voteScore)
+    this.state.toggleScore === true
+      ? this.setState(() => ({
+        sortedVoted: sort,
+        toggleScore: false,
+      }))
+      : this.setState(() => ({
+        sortedVoted: sort.reverse(),
+        toggleScore: true,
+      }))
   }
   newPost = (postSorted) => {
-    console.log(postSorted)
+    console.log(this.props)
+
+    // posts[post.id] = {
+    // id: post.id,
+    // timestamp: post.timestamp,
+    // title: post.title,
+    // body: post.body,
+    // author: post.author,
+    // category: post.category,
+    // voteScore: 1,
+    // deleted: false,
+    // commentCount: 0,
+    // }
   }
   render() {
     const { posts } = this.props
@@ -39,13 +73,13 @@ class Home extends Component {
         </h1>
         <div className="col m-4">
           <button onClick={() => this.date(postSorted)}>
-            Date
+            Sort Date { this.state.toggleDate === true ? <IoMdArrowUp /> : <IoMdArrowDown />}
           </button>
           <button onClick={() => this.voteScore(postSorted)} >
-            sort by vote score
+            Sort Score { this.state.toggleScore ? <IoMdArrowUp /> : <IoMdArrowDown />}
           </button>
           <button onClick={() => this.newPost(postSorted)} >
-            add new post
+            Add New Post
           </button>
         </div>
         <div className="flex-column col m-4 w-50 align-items-center">
@@ -68,5 +102,5 @@ function mapStateToProps({ categories, posts }) {
     posts: sortedTimestamp,
   }
 }
-export default connect(mapStateToProps)(Home)
+export default withRouter(connect(mapStateToProps)(Home))
 
