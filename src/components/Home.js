@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
-
+import { Redirect, withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 // import { formatDate } from '../utils/helpers'
@@ -12,11 +12,13 @@ import { IoMdArrowUp, IoMdArrowDown } from 'react-icons/io'
 
 class Home extends Component {
   static propTypes = {
+    posts: PropTypes.array.isRequired,
   }
   state = {
     sortedVoted: null,
     toggleDate: true,
     toggleScore: true,
+    redirect: null,
   }
   date = (postSorted) => {
     const sort = _.sortBy(postSorted, postSorted.timestamp)
@@ -43,23 +45,31 @@ class Home extends Component {
       }))
   }
   newPost = (postSorted) => {
-    console.log(this.props)
-
-    // posts[post.id] = {
-    // id: post.id,
-    // timestamp: post.timestamp,
-    // title: post.title,
-    // body: post.body,
-    // author: post.author,
-    // category: post.category,
-    // voteScore: 1,
-    // deleted: false,
-    // commentCount: 0,
-    // }
+    if (postSorted) {
+      this.setState(() => ({
+        redirect: true,
+      }))
+    }
   }
+
+  // posts[post.id] = {
+  // id: post.id,
+  // timestamp: post.timestamp,
+  // title: post.title,
+  // body: post.body,
+  // author: post.author,
+  // category: post.category,
+  // voteScore: 1,
+  // deleted: false,
+  // commentCount: 0,
+  // }
+
   render() {
     const { posts } = this.props
     const postSorted = posts
+    if (this.state.redirect) {
+      return <Redirect to="/newpost" />
+    }
     return (
       <div className="Home row justify-content-center flex-column">
         <div className="">
@@ -94,9 +104,7 @@ class Home extends Component {
 }
 
 function mapStateToProps({ categories, posts }) {
-  // console.log(posts)
   const arrPosts = Object.values(posts)
-  // console.log(arrPosts)
   const sortedTimestamp = _.sortBy(arrPosts, arrPosts.timestamp)
   return {
     posts: sortedTimestamp,

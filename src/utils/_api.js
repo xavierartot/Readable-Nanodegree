@@ -32,12 +32,43 @@ export function getInitialData() {
     posts,
   }))
 }
+// export function addNewPost(post) {
+// fetch(`${api}/post`, {
+// method: 'POST',
+// headers,
+// body: JSON.stringify(post),
+// )
+// // .catch(err => console.log(err))
+// }
 
-    // api.add(newComment)
-      // .then((c, e) => {
-    // console.log(c, e)
-      // })
-      // .catch(err => console.log(err))
+export const addNewPost = post =>
+  fetch(`${api}/post`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ post }),
+  }).then(res => res.json())
+    .catch(err => console.log(err))
+
+// app.post('/posts', bodyParser.json(), (req, res) => {
+// posts.add(req.token, req.body)
+// .then(
+// data => res.send(data),
+// (error) => {
+// console.error(error)
+// res.status(500).send({
+// error: 'There was an error.',
+// })
+// },
+// )
+// })
+// api.add(newComment)
+// .then((c, e) => {
+// console.log(c, e)
+// })
+// .catch(err => console.log(err))
 
 
 // app.post('/comments/:id', bodyParser.json(), (req, res) => {

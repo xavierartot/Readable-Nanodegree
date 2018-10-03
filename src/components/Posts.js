@@ -12,11 +12,11 @@ class posts extends Component {
   render() {
     const { posts, sortedVoted } = this.props
     let displayPosts = posts
-    console.log(sortedVoted)
+    // console.log(sortedVoted)
     if (sortedVoted !== null) {
       displayPosts = sortedVoted
     }
-    console.log(sortedVoted)
+    // console.log(sortedVoted)
     return (
       <div className="posts">
         {displayPosts && displayPosts.map(post => (
