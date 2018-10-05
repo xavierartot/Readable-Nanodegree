@@ -7,6 +7,7 @@
 import React, { Component, Fragment } from 'react'
 import { addNewPost } from '../utils/_api'
 import { generateUID } from '../utils/helpers'
+import { connect } from 'react-redux'
 
 class NewPost extends Component {
     handleSubmit = (event) => {
@@ -85,4 +86,9 @@ class NewPost extends Component {
       )
     }
 }
-export default NewPost
+function mapStateToProps({ category }, props) {
+  return {
+    category,
+  }
+}
+export default connect(mapStateToProps)(NewPost)

@@ -3,6 +3,7 @@ import { NavLink, Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 // import { Button } from 'styled-components'
 import { NavBrand, HeaderNav, NavLinkTop } from '../css/Styled'
+import { Button } from 'semantic-ui-react'
 
 
 class Header extends Component {

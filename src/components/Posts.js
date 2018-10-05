@@ -7,6 +7,7 @@
  */
 import React, { Component } from 'react'
 import { formatDate } from '../utils/helpers'
+import ScoreButton from './ScoreButton'
 
 class posts extends Component {
   render() {
@@ -37,7 +38,7 @@ class posts extends Component {
                 category: {post.category}
             </li>
             <li className="list-group-item">
-                vote score: {post.voteScore}
+              <ScoreButton displayPosts={displayPosts} idPost={post.id} vote={post.voteScore} />
             </li>
             <li className="list-group-item">
               {

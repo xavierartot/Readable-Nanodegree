@@ -13,6 +13,7 @@ import Header from './Header'
 import PageNotFound from './PageNotFound'
 import Page from './Page'
 import NewPost from './NewPost'
+import 'semantic-ui-css/semantic.min.css'
 
 
 class App extends Component {

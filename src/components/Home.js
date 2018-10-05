@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { Redirect, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import _ from 'lodash'
-// import { formatDate } from '../utils/helpers'
+import { Button, Icon } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+
+// components
 import Posts from './Posts'
-// import PropTypes from 'prop-types'
 // import pullAll from 'lodash/pullAll'
-import { IoMdArrowUp, IoMdArrowDown } from 'react-icons/io'
-// import { MdPlaylistAddCheck } from 'react-icons/md'
 
 class Home extends Component {
   static propTypes = {
@@ -20,7 +19,7 @@ class Home extends Component {
     toggleScore: true,
     redirect: null,
   }
-  date = (postSorted) => {
+  sortDate = (postSorted) => {
     const sort = _.sortBy(postSorted, postSorted.timestamp)
     this.state.toggleDate === true
       ? this.setState(() => ({
@@ -72,25 +71,41 @@ class Home extends Component {
     }
     return (
       <div className="Home row justify-content-center flex-column">
-        <div className="">
-          <p className="text-danger">should list all of the posts</p>
-          <p className="text-danger">should have a control for changing the sort method for the list, including at minimum, order by voteScore and order by timestamp
-          </p>
-          <p className="text-danger">should have a control for adding a new post</p>
-        </div>
         <h1 className="col m-4 align-center" >
             All the post
         </h1>
         <div className="col m-4">
-          <button onClick={() => this.date(postSorted)}>
-            Sort Date { this.state.toggleDate === true ? <IoMdArrowUp /> : <IoMdArrowDown />}
-          </button>
-          <button onClick={() => this.voteScore(postSorted)} >
-            Sort Score { this.state.toggleScore ? <IoMdArrowUp /> : <IoMdArrowDown />}
-          </button>
-          <button onClick={() => this.newPost(postSorted)} >
+          <Button
+            color="teal"
+            icon
+            labelPosition="left"
+            onClick={() => this.sortDate(postSorted)}
+          >
+            <Icon name={this.state.toggleDate === true ? 'arrow down' : 'arrow up'} />
+            Sort Date
+          </Button>
+          <Button
+            color="red"
+            icon
+            labelPosition="left"
+            onClick={() => this.voteScore(postSorted)}
+          >
+            <Icon name={this.state.toggleScore === true
+              ? 'arrow down' : 'arrow up'}
+            />
+            Sort Score
+          </Button>
+
+          <Button
+            color="orange"
+            icon
+            labelPosition="left"
+            onClick={() => this.newPost(postSorted)}
+          >
+            <Icon name="add" />
             Add New Post
-          </button>
+          </Button>
+
         </div>
         <div className="flex-column col m-4 w-50 align-items-center">
           <Posts

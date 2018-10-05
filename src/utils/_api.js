@@ -18,8 +18,14 @@ export const getCategories = () =>
     .then(res => res.json())
     .then(data => data)
 
+
 export const getPost = () =>
   fetch(`${api}/posts`, { headers })
+    .then(res => res.json())
+    .then(data => data)
+
+export const getComments = id =>
+  fetch(`${api}/comments/${id}`, { headers })
     .then(res => res.json())
     .then(data => data)
 
@@ -32,6 +38,21 @@ export function getInitialData() {
     posts,
   }))
 }
+
+// get comments by id
+// app.get('/comments/:id', (req, res) => {
+// comments.get(req.token, req.params.id)
+// .then(
+// data => res.send(data),
+// (error) => {
+// console.error(error)
+// res.status(500).send({
+// error: 'There was an error.',
+// })
+// },
+// )
+// })
+
 // export function addNewPost(post) {
 // fetch(`${api}/post`, {
 // method: 'POST',
