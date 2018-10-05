@@ -32,7 +32,7 @@ class ScoreButton extends Component {
       idPost, vote, dispatch, displayPosts,
     } = this.props
     const { newVote } = this.state
-    console.log(idPost, vote, dispatch, displayPosts)
+    console.log(idPost, vote, displayPosts)
     return (
       <div>
         <Button.Group>

@@ -16,29 +16,20 @@ export default function receivePosts(state = {}, action) {
     case SCORE_INCREMENT_POSTS:
       const { vote, idPost, displayPosts } = action
       const newState = state
-      console.log(state, vote, idPost, displayPosts)
-      for (let i = 0, len = state.length; i < len; i++) {
-        console.log(1)
-      }
-      // [...post, right: 'blue']
-      // newState.map(post => post)
-
-      // const newS = update(state, {
-      // a: {
-      // c: { $set: 'new value' },
-      // },
-      // })
-
-      const updateVote = {
-        ...state,
-        // [postSingle]: {
-        // voteScore: action.vote++,
-        // },
-      }
+      // lodash return a new collection without the update object
+      // I'm deleting the post I want to update
+      const reject = _.reject(newState, o => o.id === idPost)
+      // console.log(reject)
+      // increment the new vote
+      displayPosts.voteScore++
+      console.log(displayPosts)
+      const updateVote = [
+        ...reject,
+        displayPosts,
+      ]
       console.log(updateVote)
       state = updateVote
       return state
-
     case SCORE_DECREMENT_POSTS:
       console.log(action.posts)
       console.log(action)
