@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Redirect, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import sortBy from 'lodash/sortBy'
 import { Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import { newPost } from '../actions/posts'
 
 // components
 import Posts from './Posts'
@@ -20,7 +21,7 @@ class Home extends Component {
     redirect: null,
   }
   sortDate = (postSorted) => {
-    const sort = _.sortBy(postSorted, postSorted.timestamp)
+    const sort = sortBy(postSorted, postSorted.timestamp)
     this.state.toggleDate === true
       ? this.setState(() => ({
         sortedVoted: sort,
@@ -32,7 +33,7 @@ class Home extends Component {
       }))
   }
   voteScore = (postSorted) => {
-    const sort = _.sortBy(postSorted, postSorted.voteScore)
+    const sort = sortBy(postSorted, postSorted.voteScore)
     this.state.toggleScore === true
       ? this.setState(() => ({
         sortedVoted: sort,
@@ -44,24 +45,14 @@ class Home extends Component {
       }))
   }
   newPost = (postSorted) => {
+    const { dispatch } = this.props
+    dispatch(newPost(postSorted))
     if (postSorted) {
       this.setState(() => ({
         redirect: true,
       }))
     }
   }
-
-  // posts[post.id] = {
-  // id: post.id,
-  // timestamp: post.timestamp,
-  // title: post.title,
-  // body: post.body,
-  // author: post.author,
-  // category: post.category,
-  // voteScore: 1,
-  // deleted: false,
-  // commentCount: 0,
-  // }
 
   render() {
     const { posts } = this.props
@@ -120,10 +111,9 @@ class Home extends Component {
 
 function mapStateToProps({ categories, posts }) {
   const arrPosts = Object.values(posts)
-  const sortedTimestamp = _.sortBy(arrPosts, arrPosts.timestamp)
+  const sortedTimestamp = sortBy(arrPosts, arrPosts.timestamp)
   return {
     posts: sortedTimestamp,
   }
 }
 export default withRouter(connect(mapStateToProps)(Home))
-

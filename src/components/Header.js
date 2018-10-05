@@ -3,7 +3,7 @@ import { NavLink, Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 // import { Button } from 'styled-components'
 import { NavBrand, HeaderNav, NavLinkTop } from '../css/Styled'
-import { Button } from 'semantic-ui-react'
+// import { Button } from 'semantic-ui-react'
 
 
 class Header extends Component {
@@ -36,23 +36,23 @@ class Header extends Component {
           <NavLinkTop className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               {
-                      Array.isArray(categories) && (
-                        categories.map((cat, i) => (
-                          <li
-                            key={cat.path}
-                            className="nav-item"
-                          >
-                            <NavLink
-                              activeClassName="active"
-                              className="nav-link"
-                              to={`/page/${cat.path}`}
-                            >
-                              {cat.name}
-                            </NavLink>
-                          </li>
-                        ))
-                      )
-                    }
+                Array.isArray(categories) && (
+                  categories.map((cat, i) => (
+                    <li
+                      key={cat.path}
+                      className="nav-item"
+                    >
+                      <NavLink
+                        activeClassName="active"
+                        className="nav-link"
+                        to={`/page/${cat.path}`}
+                      >
+                        {cat.name}
+                      </NavLink>
+                    </li>
+                  ))
+                )
+              }
             </ul>
           </NavLinkTop>
         </nav>

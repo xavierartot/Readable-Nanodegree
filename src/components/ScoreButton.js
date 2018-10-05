@@ -12,26 +12,20 @@ import { connect } from 'react-redux'
 import { incrementPosts, decrementPosts } from '../actions/posts'
 
 class ScoreButton extends Component {
-  state = {
-    newVote: null,
-  }
   increment = () => {
     const {
-      idPost, vote, dispatch, displayPosts,
+      idPost, dispatch, displayPosts,
     } = this.props
-    dispatch(incrementPosts(vote, idPost, displayPosts))
+    dispatch(incrementPosts(idPost, displayPosts))
   }
   decrement = () => {
     const {
-      idPost, vote, dispatch, displayPosts,
+      idPost, dispatch, displayPosts,
     } = this.props
-    dispatch(decrementPosts(vote, idPost, displayPosts))
+    dispatch(decrementPosts(idPost, displayPosts))
   }
   render() {
-    const {
-      idPost, vote, dispatch, displayPosts,
-    } = this.props
-    const { newVote } = this.state
+    const { vote } = this.props
     return (
       <div>
         <Button.Group>
@@ -49,4 +43,3 @@ function mapStateToProps({ state }, props) {
   }
 }
 export default connect(mapStateToProps)(ScoreButton)
-
