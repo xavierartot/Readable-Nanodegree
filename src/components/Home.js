@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { Redirect, withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import sortBy from 'lodash/sortBy'
 import { Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { newPost } from '../actions/posts'
 
 // components
 import Posts from './Posts'
@@ -18,7 +17,6 @@ class Home extends Component {
     sortedVoted: null,
     toggleDate: true,
     toggleScore: true,
-    redirect: null,
   }
   sortDate = (postSorted) => {
     const sort = sortBy(postSorted, postSorted.timestamp)
@@ -44,22 +42,10 @@ class Home extends Component {
         toggleScore: true,
       }))
   }
-  newPost = (postSorted) => {
-    const { dispatch } = this.props
-    dispatch(newPost(postSorted))
-    if (postSorted) {
-      this.setState(() => ({
-        redirect: true,
-      }))
-    }
-  }
 
   render() {
     const { posts } = this.props
     const postSorted = posts
-    if (this.state.redirect) {
-      return <Redirect to="/newpost" />
-    }
     return (
       <div className="Home row justify-content-center flex-column">
         <h1 className="col m-4 align-center" >
@@ -86,16 +72,16 @@ class Home extends Component {
             />
             Sort Score
           </Button>
-
-          <Button
-            color="orange"
-            icon
-            labelPosition="left"
-            onClick={() => this.newPost(postSorted)}
-          >
-            <Icon name="add" />
-            Add New Post
-          </Button>
+          <Link to="/newpost">
+            <Button
+              color="orange"
+              icon
+              labelPosition="left"
+            >
+              <Icon name="add" />
+              Add New Post
+            </Button>
+          </Link>
 
         </div>
         <div className="flex-column col m-4 w-50 align-items-center">

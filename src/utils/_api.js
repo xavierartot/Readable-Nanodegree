@@ -18,6 +18,15 @@ export const getCategories = () =>
     .then(res => res.json())
     .then(data => data)
 
+export const test = (data) => {
+  fetch(`${api}/posts`, {
+    ...headers,
+    method: 'POST',
+    body: JSON.stringify({ data }),
+  })
+    .catch(err => console.log(err))
+}
+
 
 export const getPost = () =>
   fetch(`${api}/posts`, { headers })
@@ -39,38 +48,18 @@ export function getInitialData() {
   }))
 }
 
-// get comments by id
-// app.get('/comments/:id', (req, res) => {
-// comments.get(req.token, req.params.id)
-// .then(
-// data => res.send(data),
-// (error) => {
-// console.error(error)
-// res.status(500).send({
-// error: 'There was an error.',
-// })
-// },
-// )
-// })
 
-// export function addNewPost(post) {
-// fetch(`${api}/post`, {
-// method: 'POST',
-// headers,
-// body: JSON.stringify(post),
-// )
-// // .catch(err => console.log(err))
-// }
-
+// use in components/NewPost.js
 export const addNewPost = post =>
-  fetch(`${api}/post`, {
+  fetch(`${api}/posts`, {
     method: 'POST',
     headers: {
       ...headers,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ post }),
-  }).then(res => res.json())
+    body: JSON.stringify(post),
+  })
+    .then(res => console.log(res.json()))
     .catch(err => console.log(err))
 
 // app.post('/posts', bodyParser.json(), (req, res) => {
