@@ -16,9 +16,11 @@ export function incrementPosts(vote, idPost, displayPosts) {
     displayPosts,
   }
 }
-export function decrementPosts(vote) {
+export function decrementPosts(vote, idPost, displayPosts) {
   return {
     type: SCORE_DECREMENT_POSTS,
     vote,
+    idPost,
+    displayPosts,
   }
 }

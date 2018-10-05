@@ -20,19 +20,18 @@ class ScoreButton extends Component {
       idPost, vote, dispatch, displayPosts,
     } = this.props
     dispatch(incrementPosts(vote, idPost, displayPosts))
-    // this.setState(() => ({
-    // newVote: scoreVote++,
-    // }))
-    // console.log(this.state.newVote)
   }
   decrement = () => {
+    const {
+      idPost, vote, dispatch, displayPosts,
+    } = this.props
+    dispatch(decrementPosts(vote, idPost, displayPosts))
   }
   render() {
     const {
       idPost, vote, dispatch, displayPosts,
     } = this.props
     const { newVote } = this.state
-    console.log(idPost, vote, displayPosts)
     return (
       <div>
         <Button.Group>

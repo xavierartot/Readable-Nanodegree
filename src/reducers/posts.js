@@ -4,9 +4,12 @@ import {
   SCORE_DECREMENT_POSTS,
 } from '../actions/posts'
 import update from 'immutability-helper'
-import _ from 'lodash'
+import reject from 'lodash/reject'
 
 export default function receivePosts(state = {}, action) {
+  const { vote, idPost, displayPosts } = action
+  const newState = state
+  let clone
   switch (action.type) {
     case RECEIVE_POSTS:
       return {
@@ -14,29 +17,32 @@ export default function receivePosts(state = {}, action) {
         ...action.posts,
       }
     case SCORE_INCREMENT_POSTS:
-      const { vote, idPost, displayPosts } = action
-      const newState = state
-      // lodash return a new collection without the update object
-      // I'm deleting the post I want to update
-      const reject = _.reject(newState, o => o.id === idPost)
+      // lodash return a new collection with the update object
+      // I'm deleting the object
+      const rejectsIncrement = reject(newState, o => o.id === idPost)
       // console.log(reject)
       // increment the new vote
       displayPosts.voteScore++
-      console.log(displayPosts)
       const updateVote = [
-        ...reject,
+        ...rejectsIncrement,
         displayPosts,
       ]
-      console.log(updateVote)
-      state = updateVote
+      clone = Object.assign({}, updateVote)
+      state = clone
       return state
     case SCORE_DECREMENT_POSTS:
-      console.log(action.posts)
-      console.log(action)
-      return {
-        ...state,
-        ...action.posts,
-      }
+      const rejectsDecrement = reject(newState, o => o.id === idPost)
+      console.log(rejectsDecrement)
+      console.log(displayPosts)
+      console.log(displayPosts.voteScore -= 1)
+      // displayPosts.voteScore--
+      const updateVoteDecrement = [
+        ...rejectsDecrement,
+        displayPosts,
+      ]
+      clone = Object.assign({}, updateVoteDecrement)
+      state = clone
+      return state
     default: return state
   }
 }

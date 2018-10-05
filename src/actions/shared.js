@@ -2,7 +2,7 @@ import { categoriesAction } from './categories'
 import { receivePosts } from './posts'
 
 // API
-import { getInitialData, getPost } from '../utils/_api'
+import { getInitialData } from '../utils/_api'
 
 export function handleInitialData() { // middleware thunk
   return (dispatch, getState) => { // thunk pattern with redux-thunk
