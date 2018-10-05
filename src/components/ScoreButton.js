@@ -28,9 +28,11 @@ class ScoreButton extends Component {
   decrement = () => {
   }
   render() {
-    const { vote } = this.props
+    const {
+      idPost, vote, dispatch, displayPosts,
+    } = this.props
     const { newVote } = this.state
-
+    console.log(idPost, vote, dispatch, displayPosts)
     return (
       <div>
         <Button.Group>

@@ -4,6 +4,7 @@ import {
   SCORE_DECREMENT_POSTS,
 } from '../actions/posts'
 import update from 'immutability-helper'
+import _ from 'lodash'
 
 export default function receivePosts(state = {}, action) {
   switch (action.type) {

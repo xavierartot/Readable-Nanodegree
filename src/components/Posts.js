@@ -38,7 +38,7 @@ class posts extends Component {
                 category: {post.category}
             </li>
             <li className="list-group-item">
-              <ScoreButton displayPosts={displayPosts} idPost={post.id} vote={post.voteScore} />
+              <ScoreButton displayPosts={post} idPost={post.id} vote={post.voteScore} />
             </li>
             <li className="list-group-item">
               {
