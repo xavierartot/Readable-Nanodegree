@@ -12,8 +12,9 @@ import { newPost } from '../actions/posts'
 import { Redirect } from 'react-router-dom'
 import { addNewPost } from '../utils/_api'
 
-import { Button, Icon, Grid, Container } from 'semantic-ui-react'
+import { Button, Container } from 'semantic-ui-react'
 import { CenterText, FormBlock } from '../css/Styled.js'
+import '../css/helpers.css'
 
 class NewPost extends Component {
   state = {
@@ -91,7 +92,7 @@ class NewPost extends Component {
       )
     }
     return (
-      <Container>
+      <Container className="ui segment containerCenter" >
         <CenterText>Add New Post</CenterText>
         <FormBlock>
           <form className="ui form" onSubmit={this.handleSubmit}>

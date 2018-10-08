@@ -31,7 +31,8 @@ class Home extends Component {
       }))
   }
   voteScore = (postSorted) => {
-    const sort = sortBy(postSorted, postSorted.voteScore)
+    // https://stackoverflow.com/questions/15137948/how-can-i-do-an-asc-and-desc-sort-using-underscore-js
+    const sort = sortBy(postSorted, num => -num.voteScore)
     this.state.toggleScore === true
       ? this.setState(() => ({
         sortedVoted: sort,
@@ -41,6 +42,7 @@ class Home extends Component {
         sortedVoted: sort.reverse(),
         toggleScore: true,
       }))
+    console.log(this.state.sortedVoted)
   }
 
   render() {

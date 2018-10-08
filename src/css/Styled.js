@@ -6,9 +6,10 @@ export const LinkPadding = styled.a`
     padding-right: 1rem;
     margin-bottom: 2rem;
 `
+export const ContainerForm = styled.div`
+    `
 export const FormBlock = styled.div`
     padding: 2rem;
-    border: 1px solid;
     width: 50%;
 `
 export const CenterText = styled.h1`
