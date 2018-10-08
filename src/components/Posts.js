@@ -10,6 +10,7 @@ import { formatDate } from '../utils/helpers'
 import ScoreButton from './ScoreButton'
 import { Icon, Card } from 'semantic-ui-react'
 
+
 class posts extends Component {
   render() {
     const { posts, sortedVoted } = this.props
