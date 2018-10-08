@@ -6,6 +6,7 @@ It's a classic CRUD app.
 * Home Page
   * shows posts
 * Create post
+* Add Post
 
 ## Installation
 

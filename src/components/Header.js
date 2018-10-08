@@ -3,6 +3,7 @@ import { withRouter, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 // import { NavBrand, HeaderNav, NavLinkTop } from '../css/Styled'
 import { Menu, Responsive } from 'semantic-ui-react'
+import '../css/helpers.css'
 
 class Header extends Component {
   state = {
@@ -20,6 +21,7 @@ class Header extends Component {
         <Responsive maxWidth={10559} minWidth={768}>
           <Menu className="navbar">
             <NavLink
+              activeClassName="activeBrand"
               className="brand item"
               to="/"
             >
@@ -39,39 +41,23 @@ class Header extends Component {
               ))
             )}
             <div className="right menu">
-              <NavLink className="item" to="/">Login</NavLink>
-              <NavLink className="item" to="/">Register</NavLink>
+              <NavLink activeClassName="activeFake" className="item" to="/">Login</NavLink>
+              <NavLink activeClassName="activeFake" className="item" to="/">Register</NavLink>
             </div>
           </Menu>
         </Responsive>
 
-        {/* CSS is in /public/index.html */}
+        {/* CSS is in /css/helpers.css */}
         <Responsive maxWidth={768}>
           <nav>
             <div id="menuToggle">
-              {/*
-              A fake / hidden checkbox is used as click reciever,
-              so you can use the :checked selector on it.
-               */}
               <input type="checkbox" />
-
-              {/*
-              Some spans to act as a hamburger.
-
-              They are acting like a real hamburger,
-              not that McDonalds stuff.
-               */}
               <span />
               <span />
               <span />
-
-              {/*
-              Too bad the menu has to be inside of the button
-              but hey, it's pure CSS magic.
-               */}
               <ul id="menu">
-                <NavLink to="/"><li>Home</li></NavLink>
-                <NavLink to="/"><li>About</li></NavLink>
+                <li><NavLink to="/"><li>Home</li></NavLink></li>
+                <li><NavLink to="/"><li>About</li></NavLink></li>
               </ul>
             </div>
           </nav>
