@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import sortBy from 'lodash/sortBy'
-import { Button, Icon } from 'semantic-ui-react'
+import { Button, Icon, Grid, Container } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-
+import { LinkPadding, CenterText } from '../css/Styled.js'
 // components
 import Posts from './Posts'
 // import pullAll from 'lodash/pullAll'
@@ -46,32 +46,38 @@ class Home extends Component {
   render() {
     const { posts } = this.props
     const postSorted = posts
+
     return (
-      <div className="Home row justify-content-center flex-column">
-        <h1 className="col m-4 align-center" >
+
+      <Container>
+        <CenterText>
             All the post
-        </h1>
-        <div className="col m-4">
-          <Button
-            color="teal"
-            icon
-            labelPosition="left"
-            onClick={() => this.sortDate(postSorted)}
-          >
-            <Icon name={this.state.toggleDate === true ? 'arrow down' : 'arrow up'} />
+        </CenterText>
+        <Grid centered columns="equal">
+          <LinkPadding>
+            <Button
+              color="teal"
+              icon
+              labelPosition="left"
+              onClick={() => this.sortDate(postSorted)}
+            >
+              <Icon name={this.state.toggleDate === true ? 'arrow down' : 'arrow up'} />
             Sort Date
-          </Button>
-          <Button
-            color="red"
-            icon
-            labelPosition="left"
-            onClick={() => this.voteScore(postSorted)}
-          >
-            <Icon name={this.state.toggleScore === true
+            </Button>
+          </LinkPadding>
+          <LinkPadding>
+            <Button
+              color="red"
+              icon
+              labelPosition="left"
+              onClick={() => this.voteScore(postSorted)}
+            >
+              <Icon name={this.state.toggleScore === true
               ? 'arrow down' : 'arrow up'}
-            />
+              />
             Sort Score
-          </Button>
+            </Button>
+          </LinkPadding>
           <Link to="/newpost">
             <Button
               color="orange"
@@ -82,15 +88,14 @@ class Home extends Component {
               Add New Post
             </Button>
           </Link>
-
-        </div>
-        <div className="flex-column col m-4 w-50 align-items-center">
+        </Grid>
+        <div className="">
           <Posts
             posts={posts}
             sortedVoted={this.state.sortedVoted}
           />
         </div>
-      </div>
+      </Container>
     )
   }
 }

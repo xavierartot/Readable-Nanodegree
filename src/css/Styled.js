@@ -1,6 +1,16 @@
 import styled from 'styled-components'
 import { palette, font } from './variables'
 
+export const LinkPadding = styled.a`
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 2rem;
+`
+export const CenterText = styled.h1`
+  text-align: center;
+    margin-bottom: 3rem;
+    margin-top: 2rem !important;
+`
 export const NavLi = styled.li`
 `
 export const NavLinkTop = styled.div`

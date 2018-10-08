@@ -8,6 +8,7 @@
 import React, { Component } from 'react'
 import { formatDate } from '../utils/helpers'
 import ScoreButton from './ScoreButton'
+import { Icon, Card } from 'semantic-ui-react'
 
 class posts extends Component {
   render() {
@@ -20,36 +21,39 @@ class posts extends Component {
     // console.log(sortedVoted)
     return (
       <div className="posts">
-        {displayPosts && displayPosts.map(post => (
-          <ul key={post.id} className="list-group mb-3 col-auto">
-            <li className="list-group-item">
+        <Card.Group className="ui four column doubling stackable grid container">
+          {displayPosts && displayPosts.map(post => (
+            <Card key={post.id} className="" >
+              <Card.Content header={`title: ${post.title}`} />
+              <Card.Content description={`category: ${post.category}`} />
+              <Card.Content extra>
                 date: {formatDate(post.timestamp)}
-            </li>
-            <li className="list-group-item">
-                title: {post.title}
-            </li>
-            <li className="list-group-item">
-                body: {post.body}
-            </li>
-            <li className="list-group-item">
-                author: {post.author}
-            </li>
-            <li className="list-group-item">
+              </Card.Content>
+              <Card.Content extra>
+
+date: {formatDate(post.timestamp)}
+              </Card.Content>
+              <Card.Content extra>
                 category: {post.category}
-            </li>
-            <li className="list-group-item">
-              <ScoreButton displayPosts={post} idPost={post.id} vote={post.voteScore} />
-            </li>
-            <li className="list-group-item">
-              {
+              </Card.Content>
+              <Card.Content extra>
+                <ScoreButton displayPosts={post} idPost={post.id} vote={post.voteScore} />
+              </Card.Content>
+              <Card.Content extra>
+                {
                 post.deleted ? 'post deleted' : 'post live'
                 }
-            </li>
-            <li className="list-group-item">
+              </Card.Content>
+              <Card.Content extra>
                 number comment: {post.commentCount}
-            </li>
-          </ul>
+              </Card.Content>
+              <Card.Content extra>
+                <Icon name="user" />
+                author: {post.author}
+              </Card.Content>
+            </Card>
           ))}
+        </Card.Group>
       </div>
     )
   }
