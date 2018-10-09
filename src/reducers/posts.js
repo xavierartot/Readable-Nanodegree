@@ -3,6 +3,7 @@ import {
   SCORE_INCREMENT_POSTS,
   SCORE_DECREMENT_POSTS,
   NEW_POST,
+  DELETE_POST,
 } from '../actions/posts'
 // import update from 'immutability-helper'
 import reject from 'lodash/reject'
@@ -45,6 +46,12 @@ export default function receivePosts(state = {}, action) {
         ...state,
         [size]: Object.assign({}, action.post),
       }
+      return state
+    case DELETE_POST:
+      console.log(state, action.id)
+      const rejects = reject(state, o => o.id === action.id)
+      console.log(rejects)
+      state = rejects
       return state
     default: return state
   }

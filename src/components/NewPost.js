@@ -5,7 +5,6 @@
  * Distributed under terms of the MIT license.
  */
 import React, { Component, Fragment } from 'react'
-// import { addNewPost } from '../utils/_api'
 import { generateUID } from '../utils/helpers'
 import { connect } from 'react-redux'
 import { newPost } from '../actions/posts'

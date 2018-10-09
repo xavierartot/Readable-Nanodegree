@@ -62,6 +62,17 @@ export const addNewPost = post =>
     .then(res => console.log(res.json()))
     .catch(err => console.log(err))
 
+export const deletePostApi = (id) => {
+  fetch(`${api}/posts/${id}`, {
+    method: 'DELETE',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(res => console.log(res.json()))
+    .catch(err => console.log(err))
+}
 // app.post('/posts', bodyParser.json(), (req, res) => {
 // posts.add(req.token, req.body)
 // .then(

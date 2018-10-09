@@ -8,12 +8,25 @@ import React, { Component } from 'react'
 import { Divider, Icon, Card } from 'semantic-ui-react'
 import { formatDate } from '../utils/helpers'
 import ScoreButton from './ScoreButton'
+import { connect } from 'react-redux'
+import { handleDeletePost } from '../actions/shared'
 
 class Post extends Component {
+  handleDelete = (event, id) => {
+    event.preventDefault()
+    // console.log(id)
+    this.props.dispatch(handleDeletePost(id))
+  }
+  handleEdit = (event) => {
+    event.preventDefault()
+  }
+  showComment = (event) => {
+    event.preventDefault()
+  }
   render() {
-    const { post } = this.props
+    const { post } = this.props// come from Posts.js
     return (
-      <Card key={post.id}>
+      <Card>
         <Card.Content>
           <Card.Header>{post.title}</Card.Header>
           <Card.Description>
@@ -35,7 +48,7 @@ class Post extends Component {
             }
           </Card.Content>
           <Card.Content extra>
-            number comments: {post.commentCount}
+            <a onClick={this.showComment}> comments: {post.commentCount}</a>
             <a className="marginLeft ">
               {post.commentCount > 0 && <Icon circular color="brown" name="comments outline" />}
             </a>
@@ -56,12 +69,12 @@ class Post extends Component {
           <a onClick={this.handleEdit} >
             <Icon circular color="teal" name="edit" />
           </a>
-          <a onClick={this.handleDelete}>
-            <Icon circular inverted name="delete" />
+          <a onClick={e => this.handleDelete(e, post.id)}>
+            <Icon circular color="red" name="delete" />
           </a>
         </Card.Content>
       </Card>
     )
   }
 }
-export default Post
+export default connect()(Post)
