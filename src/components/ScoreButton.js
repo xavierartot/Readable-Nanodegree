@@ -17,7 +17,6 @@ class ScoreButton extends Component {
       idPost, dispatch, displayPosts,
     } = this.props
     dispatch(incrementPosts(idPost, displayPosts))
-    console.log(this.props)
   }
   decrement = () => {
     const {

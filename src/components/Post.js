@@ -42,8 +42,7 @@ class Post extends Component {
             category: {post.category}
           </Card.Content>
           <Card.Content extra>
-            <ScoreButton displayPosts={post} idPost={post.id} vote={post.voteScore} />
-            {post.voteScore}
+            <ScoreButton displayPosts={post} idPost={post.id} />
           </Card.Content>
           <Card.Content extra>
             {

@@ -18,113 +18,79 @@ class NewPost extends Component {
   constructor(props) {
     super()
     this.state = {
-      post: {
-        id: '',
-        title: '',
-        author: '',
-        category: '',
-        body: '',
-      },
-      redirectToHome: null,
-      redirectToPost: null,
+      title: '',
+      author: '',
+      category: '',
+      body: '',
+      redirect: null,
       isEmpty: null,
-      update: false, // update post false if is new post
-      loadingSubmit: false, // loading in button
+      loadingSubmit: false,
     }
   }
 
-  handleSubmitAdd = (event) => {
-    event.preventDefault()
+  handleSubmit = (event) => {
     this.setState(() => ({
       loadingSubmit: true,
     }))
+    event.preventDefault()
     const {
-      post,
-      update,
+      title, author, category, body,
     } = this.state
+
+
     setTimeout(() => { // play on second to display the loading animation
-      if (post.title === '' || post.author === '' || post.body === '' || post.category === '') {
+      if (title === '' || author === '' || body === '' || category === '') {
         return this.setState(() => ({
           isEmpty: true,
           loadingSubmit: false,
         }))
       }
-      if (update === true) {
-        // return false
+      this.setState(() => ({
+        isEmpty: false,
+        loadingSubmit: false,
+      }))
+      const id = generateUID()
+      const newObj = {
+        id,
+        timestamp: Date.now(),
+        title,
+        author,
+        category,
+        body,
+        voteScore: 0,
+        deleted: false,
+        commentCount: 0,
+      }
+      this.props.dispatch(handleAddPost(newObj))
+
+      // redirect to home
+      if (newObj) {
         this.setState(() => ({
-          isEmpty: false,
           loadingSubmit: false,
-          // redirectToPost : true,
+          redirect: true,
         }))
       }
-      if (update === false) {
-        post.id = generateUID()
-        post.timestamp = Date.now()
-        post.voteScore = 0
-        post.deleted = false
-        post.commentCount = 0
-        this.props.dispatch(handleAddPost(post))
-        // redirect to home
-        if (post.id !== '') {
-          this.setState(() => ({
-            isEmpty: false,
-            loadingSubmit: false,
-            redirectToHome: true,
-          }))
-        }
-      }
-      return false
     }, 150)
   }
+
   handleChange = (event, prop) => {
-    const { post } = this.state
-    this.setState({
-      post: {
-        ...post,
-        [prop]: event.target.value,
-        update: true,
-      },
-    })
-  }
-  componentDidMount() {
-    const { post } = this.props
-
-    if (post && post.id !== '') {
-      this.setState({
-        post,
-        update: true,
-      })
-    }
-  }
-  componentWillReceiveProps(nextProps) {
-    const { post } = nextProps
-
-    if (this.props.post !== post) {
-      this.setState({
-        post,
-      })
-    }
+    event.preventDefault()
+    this.setState({ [prop]: event.target.value })
   }
   render() {
     const { categories } = this.props
-    const {
-      post, redirectToHome, redirectToPost, update,
-    } = this.state
-    if (redirectToHome) {
-      return <Redirect to="/" />
-    }
-    if (redirectToPost) {
+    if (this.state.redirect) {
       return <Redirect to="/" />
     }
     return (
       <Container className="ui segment containerCenter" >
         {this.state.isEmpty
-          ? <Fragment>
-            <Header as="h1" color="red">All the fields are required</Header>
-            </Fragment>
-            : update ? <CenterText>update Post</CenterText> : <CenterText>Add New Post</CenterText>}
+        ? <Fragment>
+          <Header as="h1" color="red">All the fields are required</Header>
+          </Fragment>
+          : <CenterText>Add New Post</CenterText>}
         <FormBlock>
-          <form className="ui form" onSubmit={this.handleSubmitAdd}>
+          <form className="ui form" onSubmit={this.handleSubmit}>
             <div className="field">
               <label htmlFor="title">Title</label>
               <input
@@ -133,7 +99,7 @@ class NewPost extends Component {
                 placeholder="Enter title"
                 required
                 type="text"
-                value={post.title}
+                value={this.state.title}
               />
             </div>
             <div className="field">
@@ -144,7 +110,7 @@ class NewPost extends Component {
                 placeholder="Enter content"
                 required
                 rows="3"
-                value={post.body}
+                value={this.state.body}
               />
             </div>
             <div className="field">
@@ -155,7 +121,7 @@ class NewPost extends Component {
                 placeholder="Enter Author"
                 required
                 type="text"
-                value={post.author}
+                value={this.state.author}
               />
             </div>
             <div className="field">
@@ -164,17 +130,11 @@ class NewPost extends Component {
                 className="ui fluid dropdown"
                 id="category"
                 onChange={e => this.handleChange(e, 'category')}
-                value={post.category}
               >
-                <option>Choose a category</option>
+                <option name="Select the category">-</option>
                 {categories &&
                   categories.map(category => (
-                    <option
-                      key={category.path}
-                      defaultValue={post.category}
-                      name={category.name}
-                    >{category.name}
-                    </option>))}
+                    <option key={category.path} name={category.name}>{category.name}</option>))}
               </select>
             </div>
             <Button
@@ -182,7 +142,7 @@ class NewPost extends Component {
               loading={!!this.state.loadingSubmit}
               type="submit"
             >
-                Submit
+              Submit
             </Button>
           </form>
         </FormBlock>
@@ -191,14 +151,14 @@ class NewPost extends Component {
   }
 }
 function mapStateToProps({ categories, posts }, { location }) {
-  let post
-  const editId = location.search.replace(/\?id=/, '')
-  if (editId) {
-    post = Object.values(posts).filter(e => e.id === editId)
-  }
+  // let findPostEdit//update form with the new obj
+  // const editId = location.search.replace(/\?id=/, '')
+  // if (editId) {
+  // findPostEdit = Object.values(posts).filter(e => e.id === editId)
+  // }
   return {
     categories: categories.categories,
-    post: editId ? post[0] : false,
+    // findPostEdit: editId ? findPostEdit[0] : false,
   }
 }
 export default connect(mapStateToProps)(NewPost)

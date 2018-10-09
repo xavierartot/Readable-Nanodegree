@@ -22,10 +22,8 @@ export default function receivePosts(state = {}, action) {
       // lodash return a new collection with the update object
       // I'm deleting the object
       const rejectsIncrement = reject(newState, o => o.id === idPost)
-      console.log(reject)
       // increment the new vote
       displayPosts.voteScore++
-      console.log(displayPosts.voteScore)
       const updateVote = [
         ...rejectsIncrement,
         displayPosts,
