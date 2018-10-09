@@ -7,7 +7,8 @@
 import React, { Component, Fragment } from 'react'
 import { generateUID } from '../utils/helpers'
 import { connect } from 'react-redux'
-import { handleAddPost } from '../actions/shared'
+import { handleAddPost, handleEditPost } from '../actions/shared'
+import { editPostApi } from '../utils/_api'
 import { Redirect } from 'react-router-dom'
 
 import { Header, Button, Container } from 'semantic-ui-react'
@@ -54,8 +55,10 @@ class NewPost extends Component {
         this.setState(() => ({
           isEmpty: false,
           loadingSubmit: false,
-          // redirectToPost : true,
+          redirectToPost: true,
         }))
+        this.props.dispatch(handleEditPost(post))
+        editPostApi(post.id, post.title, post.body)
       }
       if (update === false) {
         post.id = generateUID()
@@ -114,7 +117,7 @@ class NewPost extends Component {
       return <Redirect to="/" />
     }
     if (redirectToPost) {
-      return <Redirect to="/" />
+      return <Redirect to={`/page/${post.category}`} />
     }
     return (
       <Container className="ui segment containerCenter" >

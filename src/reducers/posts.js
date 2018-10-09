@@ -12,6 +12,7 @@ import reject from 'lodash/reject'
 export default function receivePosts(state = {}, action) {
   const { idPost, displayPosts } = action// declaration to increment and decrement
   const newState = state// declaration to increment and decrement
+  let size
   switch (action.type) {
     case RECEIVE_POSTS:
       return {
@@ -41,7 +42,7 @@ export default function receivePosts(state = {}, action) {
       state = Object.assign({}, updateVoteDecrement)
       return state
     case NEW_POST:
-      const size = Object.keys(state).length
+      size = Object.keys(state).length
       state = {
         ...state,
         [size]: Object.assign({}, action.post),
@@ -53,7 +54,15 @@ export default function receivePosts(state = {}, action) {
       state = rejects
       return state
     case EDIT_POST:
-      console.log(state, action.id)
+      console.log(state, action.post)
+      console.log(action.post.id)
+      const rejectEditPost = reject(state, o => o.id === action.post.id)
+      const postEdit = action.post
+      size = Object.keys(state).length
+      state = {
+        ...rejectEditPost,
+        [size]: postEdit,
+      }
       return state
     default: return state
   }

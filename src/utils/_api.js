@@ -73,8 +73,18 @@ export const deletePostApi = (id) => {
     .catch(err => console.log(err))
 }
 
-export const editPostApi = (id) => {
+// editPostApi (post.title, post.body)
+export const editPostApi = (id, title, body) => {
+  fetch(`${api}/post/${id}`, {
+    method: 'PUT',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ title, body }),
+  }).then(res => res.json())
 }
+
 // app.post('/posts', bodyParser.json(), (req, res) => {
 // posts.add(req.token, req.body)
 // .then(
