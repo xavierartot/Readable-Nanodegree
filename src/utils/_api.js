@@ -59,7 +59,6 @@ export const addNewPost = post =>
     },
     body: JSON.stringify(post),
   })
-    .then(res => console.log(res.json()))
     .catch(err => console.log(err))
 
 export const deletePostApi = (id) => {
@@ -72,6 +71,9 @@ export const deletePostApi = (id) => {
   })
     .then(res => console.log(res.json()))
     .catch(err => console.log(err))
+}
+
+export const editPostApi = (id) => {
 }
 // app.post('/posts', bodyParser.json(), (req, res) => {
 // posts.add(req.token, req.body)

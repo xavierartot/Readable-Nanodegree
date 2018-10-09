@@ -1,8 +1,7 @@
 import { receiveCategories } from './categories'
-import { receivePosts, deletePost } from './posts'
-
+import { editPost, receivePosts, deletePost, newPost } from './posts'
 // API
-import { getInitialData, deletePostApi } from '../utils/_api'
+import { editPostApi, addNewPost, getInitialData, deletePostApi } from '../utils/_api'
 
 export function handleInitialData() { // middleware thunk
   return (dispatch, getState) => { // thunk pattern with redux-thunk
@@ -22,5 +21,17 @@ export function handleDeletePost(id) {
   return (dispatch, getState) => { // thunk pattern with redux-thunk
     dispatch(deletePost(id))
     deletePostApi(id)
+  }
+}
+export function handleAddPost(post) {
+  return (dispatch, getState) => { // thunk pattern with redux-thunk
+    dispatch(newPost(post))
+    addNewPost(post)
+  }
+}
+export function handleEditPost(post) {
+  return (dispatch, getState) => { // thunk pattern with redux-thunk
+    dispatch(editPost(post))
+    editPostApi(post)
   }
 }

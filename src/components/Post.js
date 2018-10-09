@@ -10,6 +10,7 @@ import { formatDate } from '../utils/helpers'
 import ScoreButton from './ScoreButton'
 import { connect } from 'react-redux'
 import { handleDeletePost } from '../actions/shared'
+import { withRouter } from 'react-router-dom'
 
 class Post extends Component {
   handleDelete = (event, id) => {
@@ -17,8 +18,9 @@ class Post extends Component {
     // console.log(id)
     this.props.dispatch(handleDeletePost(id))
   }
-  handleEdit = (event) => {
+  handleEdit = (event, id) => {
     event.preventDefault()
+    this.props.history.push({ pathname: '/newpost', search: `?id=${id}` })
   }
   showComment = (event) => {
     event.preventDefault()
@@ -41,6 +43,7 @@ class Post extends Component {
           </Card.Content>
           <Card.Content extra>
             <ScoreButton displayPosts={post} idPost={post.id} vote={post.voteScore} />
+            {post.voteScore}
           </Card.Content>
           <Card.Content extra>
             {
@@ -66,7 +69,7 @@ class Post extends Component {
           <a onClick={this.add}>
             <Icon circular color="pink" name="user" />
           </a>
-          <a onClick={this.handleEdit} >
+          <a onClick={e => this.handleEdit(e, post.id)} >
             <Icon circular color="teal" name="edit" />
           </a>
           <a onClick={e => this.handleDelete(e, post.id)}>
@@ -77,4 +80,4 @@ class Post extends Component {
     )
   }
 }
-export default connect()(Post)
+export default withRouter(connect()(Post))

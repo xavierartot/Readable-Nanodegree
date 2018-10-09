@@ -7,11 +7,10 @@
 import React, { Component, Fragment } from 'react'
 import { generateUID } from '../utils/helpers'
 import { connect } from 'react-redux'
-import { newPost } from '../actions/posts'
+import { handleAddPost } from '../actions/shared'
 import { Redirect } from 'react-router-dom'
-import { addNewPost } from '../utils/_api'
 
-import { Button, Container } from 'semantic-ui-react'
+import { Header, Button, Container } from 'semantic-ui-react'
 import { CenterText, FormBlock } from '../css/Styled.js'
 import '../css/helpers.css'
 
@@ -35,9 +34,9 @@ class NewPost extends Component {
       title, author, category, body,
     } = this.state
 
-    // play on second for fun
-    setTimeout(() => {
-      if (title === '' && author === '' && body === '' && category === '-') {
+
+    setTimeout(() => { // play on second to display the loading animation
+      if (title === '' || author === '' || body === '' || category === '') {
         return this.setState(() => ({
           isEmpty: true,
           loadingSubmit: false,
@@ -59,10 +58,7 @@ class NewPost extends Component {
         deleted: false,
         commentCount: 0,
       }
-      this.props.dispatch(newPost(newObj))
-
-      // addNewPost  api server, add the post
-      addNewPost(newObj)
+      this.props.dispatch(handleAddPost(newObj))
 
       // redirect to home
       if (newObj) {
@@ -71,7 +67,7 @@ class NewPost extends Component {
           redirect: true,
         }))
       }
-    }, 100)
+    }, 150)
   }
 
   handleChange = (event, prop) => {
@@ -83,16 +79,16 @@ class NewPost extends Component {
     if (this.state.redirect) {
       return <Redirect to="/" />
     }
-    if (this.state.isEmpty) {
-      return (
-        <Fragment>
-          <p>All the fields are required</p>
-        </Fragment>
-      )
+    if (this.props.findPostEdit) {
+      console.log(this.props.findPostEdit)
     }
     return (
       <Container className="ui segment containerCenter" >
-        <CenterText>Add New Post</CenterText>
+        {this.state.isEmpty
+        ? <Fragment>
+          <Header as="h1" color="red">All the fields are required</Header>
+          </Fragment>
+          : <CenterText>Add New Post</CenterText>}
         <FormBlock>
           <form className="ui form" onSubmit={this.handleSubmit}>
             <div className="field">
@@ -135,7 +131,7 @@ class NewPost extends Component {
                 id="category"
                 onChange={e => this.handleChange(e, 'category')}
               >
-                <option name="-">-</option>
+                <option name="Select the category">-</option>
                 {categories &&
                   categories.map(category => (
                     <option key={category.path} name={category.name}>{category.name}</option>))}
@@ -154,10 +150,15 @@ class NewPost extends Component {
     )
   }
 }
-function mapStateToProps({ categories }, props) {
-  // console.log(categories)
+function mapStateToProps({ categories, posts }, { location }) {
+  let findPostEdit
+  const editId = location.search.replace(/\?id=/, '')
+  if (editId) {
+    findPostEdit = Object.values(posts).filter(e => e.id === editId)
+  }
   return {
     categories: categories.categories,
+    findPostEdit: editId ? findPostEdit[0] : false,
   }
 }
 export default connect(mapStateToProps)(NewPost)

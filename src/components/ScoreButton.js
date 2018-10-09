@@ -17,6 +17,7 @@ class ScoreButton extends Component {
       idPost, dispatch, displayPosts,
     } = this.props
     dispatch(incrementPosts(idPost, displayPosts))
+    console.log(this.props)
   }
   decrement = () => {
     const {
@@ -40,6 +41,7 @@ class ScoreButton extends Component {
 function mapStateToProps({ state }, props) {
   return {
     state,
+    vote: props.displayPosts.voteScore,
   }
 }
 export default connect(mapStateToProps)(ScoreButton)

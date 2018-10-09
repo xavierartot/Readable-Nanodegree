@@ -4,6 +4,7 @@ import {
   SCORE_DECREMENT_POSTS,
   NEW_POST,
   DELETE_POST,
+  EDIT_POST,
 } from '../actions/posts'
 // import update from 'immutability-helper'
 import reject from 'lodash/reject'
@@ -21,9 +22,10 @@ export default function receivePosts(state = {}, action) {
       // lodash return a new collection with the update object
       // I'm deleting the object
       const rejectsIncrement = reject(newState, o => o.id === idPost)
-      // console.log(reject)
+      console.log(reject)
       // increment the new vote
       displayPosts.voteScore++
+      console.log(displayPosts.voteScore)
       const updateVote = [
         ...rejectsIncrement,
         displayPosts,
@@ -48,10 +50,12 @@ export default function receivePosts(state = {}, action) {
       }
       return state
     case DELETE_POST:
-      console.log(state, action.id)
       const rejects = reject(state, o => o.id === action.id)
       console.log(rejects)
       state = rejects
+      return state
+    case EDIT_POST:
+      console.log(state, action.id)
       return state
     default: return state
   }
