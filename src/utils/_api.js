@@ -9,6 +9,7 @@ if (!token) { token = localStorage.token = Math.random().toString(36).substr(-8)
 
 const headers = {
   Accept: 'application/json',
+  'Content-Type': 'application/json',
   Authorization: token,
 }
 
@@ -33,8 +34,8 @@ export const getPost = () =>
     .then(res => res.json())
     .then(data => data)
 
-export const getComments = id =>
-  fetch(`${api}/comments/${id}`, { headers })
+export const getCommentById = id =>
+  fetch(`${api}/posts/${id}/comments`, { headers })
     .then(res => res.json())
     .then(data => data)
 
@@ -55,7 +56,6 @@ export const addNewPost = post =>
     method: 'POST',
     headers: {
       ...headers,
-      'Content-Type': 'application/json',
     },
     body: JSON.stringify(post),
   })
@@ -66,7 +66,6 @@ export const deletePostApi = (id) => {
     method: 'DELETE',
     headers: {
       ...headers,
-      'Content-Type': 'application/json',
     },
   })
     .then(res => console.log(res.json()))
@@ -74,15 +73,15 @@ export const deletePostApi = (id) => {
 }
 
 // editPostApi (post.title, post.body)
-export const editPostApi = (id, title, body) => {
-  fetch(`${api}/post/${id}`, {
+export const editPostApi = (post) => {
+  const { title, body } = post
+  fetch(`${api}/posts/${post.id}`, {
     method: 'PUT',
+    body: JSON.stringify({ title, body }),
     headers: {
       ...headers,
-      'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ title, body }),
-  }).then(res => res.json())
+  }).then(res => res)
 }
 
 // app.post('/posts', bodyParser.json(), (req, res) => {
@@ -134,7 +133,6 @@ export const update = (comment, shelf) =>
     method: 'PUT',
     headers: {
       ...headers,
-      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ shelf }),
   }).then(res => res.json())
@@ -144,7 +142,6 @@ export const search = query =>
     method: 'POST',
     headers: {
       ...headers,
-      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ query }),
   }).then(res => res.json())

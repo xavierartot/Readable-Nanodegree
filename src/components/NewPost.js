@@ -51,16 +51,19 @@ class NewPost extends Component {
         }))
       }
       if (update === true) {
+        console.log('update')
         // return false
         this.setState(() => ({
           isEmpty: false,
           loadingSubmit: false,
           redirectToPost: true,
+          // redirectToHome: true,
         }))
         this.props.dispatch(handleEditPost(post))
-        editPostApi(post.id, post.title, post.body)
+        editPostApi(post)
       }
       if (update === false) {
+        console.log('new')
         post.id = generateUID()
         post.timestamp = Date.now()
         post.voteScore = 0
@@ -90,21 +93,30 @@ class NewPost extends Component {
     })
   }
   componentDidMount() {
-    const { post } = this.props
-
+    const { post, location } = this.props
+    // console.log(post, location.search)
     if (post && post.id !== '') {
+      console.log(post)
       this.setState({
         post,
         update: true,
       })
+    } else {
+      // post is empty but not the id
+      // redirect to the individual post
+      const id = location.search.replace(/\?id=/, '')
+      this.props.history.push({ pathname: `/page/${id}` })
     }
   }
-  componentWillReceiveProps(nextProps) {
-    const { post } = nextProps
 
-    if (this.props.post !== post) {
+  // getDerivedStateFromProps
+  componentWillReceiveProps(nextProps) {
+    const { post } = this.props
+    console.log(2)
+    if (post && post.id !== '') {
       this.setState({
         post,
+        update: true,
       })
     }
   }
@@ -196,6 +208,7 @@ class NewPost extends Component {
 function mapStateToProps({ categories, posts }, { location }) {
   let post
   const editId = location.search.replace(/\?id=/, '')
+  console.log(location.search)
   if (editId) {
     post = Object.values(posts).filter(e => e.id === editId)
   }

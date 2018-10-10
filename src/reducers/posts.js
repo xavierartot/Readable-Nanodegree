@@ -50,12 +50,12 @@ export default function receivePosts(state = {}, action) {
       return state
     case DELETE_POST:
       const rejects = reject(state, o => o.id === action.id)
-      console.log(rejects)
+      // console.log(rejects)
       state = rejects
       return state
     case EDIT_POST:
-      console.log(state, action.post)
-      console.log(action.post.id)
+      // console.log(state, action.post)
+      // console.log(action.post.id)
       const rejectEditPost = reject(state, o => o.id === action.post.id)
       const postEdit = action.post
       size = Object.keys(state).length

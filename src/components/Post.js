@@ -10,7 +10,7 @@ import { formatDate } from '../utils/helpers'
 import ScoreButton from './ScoreButton'
 import { connect } from 'react-redux'
 import { handleDeletePost } from '../actions/shared'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 class Post extends Component {
   handleDelete = (event, id) => {
@@ -39,7 +39,14 @@ class Post extends Component {
             created {formatDate(post.timestamp)}
           </Card.Meta>
           <Card.Content extra>
-            category: {post.category}
+            <Link
+              to={{
+                pathname: `/page/${post.category}`,
+                search: `?id=${post.id}`,
+              }}
+            >
+              category: {post.category}
+            </Link>
           </Card.Content>
           <Card.Content extra>
             <ScoreButton displayPosts={post} idPost={post.id} />
