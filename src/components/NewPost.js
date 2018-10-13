@@ -44,14 +44,14 @@ class NewPost extends Component {
       update,
     } = this.state
     setTimeout(() => { // play on second to display the loading animation
-      if (post.title === '' || post.author === '' || post.body === '' || post.category === '') {
+      if (post.title === '' || post.body === '') {
         return this.setState(() => ({
           isEmpty: true,
           loadingSubmit: false,
         }))
       }
       if (update === true) {
-        console.log('update')
+        // console.log('update')
         // return false
         this.setState(() => ({
           isEmpty: false,
@@ -63,7 +63,7 @@ class NewPost extends Component {
         editPostApi(post)
       }
       if (update === false) {
-        console.log('new')
+        // console.log('new')
         post.id = generateUID()
         post.timestamp = Date.now()
         post.voteScore = 0
@@ -96,38 +96,29 @@ class NewPost extends Component {
     const { post, location } = this.props
     // console.log(post, location.search)
     if (post && post.id !== '') {
-      console.log(post)
+      // console.log(post)
       this.setState({
         post,
         update: true,
       })
     } else {
+      // console.log(post, location.search)
       // post is empty but not the id
       // redirect to the individual post
-      const id = location.search.replace(/\?id=/, '')
-      this.props.history.push({ pathname: `/page/${id}` })
+      // const id = location.search.replace(/\?id=/, '')
+      // this.props.history.push({ pathname: `/page/${id}` })
     }
   }
 
-  // getDerivedStateFromProps
-  // componentWillReceiveProps(nextProps) {
-  // const { post } = this.props
-  // console.log(2)
-  // if (post && post.id !== '') {
-  // this.setState({
-  // post,
-  // update: true,
-  // })
-  // }
-  // }
   componentDidUpdate(prevProps, prevState) {
     const { post } = this.props
-    console.log(post)
-    if (prevProps.post !== post && prevProps.post.id !== '') {
-      this.setState({
-        post,
-        update: true,
-      })
+    if (prevProps.post !== post) {
+      if (post && post.id !== '') {
+        this.setState({
+          post,
+          update: true,
+        })
+      }
     }
   }
   render() {
@@ -175,6 +166,7 @@ class NewPost extends Component {
             <div className="field">
               <label htmlFor="author">Author</label>
               <input
+                disabled
                 id="author"
                 onChange={e => this.handleChange(e, 'author')}
                 placeholder="Enter Author"
@@ -187,6 +179,7 @@ class NewPost extends Component {
               <label htmlFor="category">Choose a category</label>
               <select
                 className="ui fluid dropdown"
+                disabled
                 id="category"
                 onChange={e => this.handleChange(e, 'category')}
                 value={post.category}
@@ -218,7 +211,7 @@ class NewPost extends Component {
 function mapStateToProps({ categories, posts }, { location }) {
   let post
   const editId = location.search.replace(/\?id=/, '')
-  console.log(location.search)
+  // console.log(location.search)
   if (editId) {
     post = Object.values(posts).filter(e => e.id === editId)
   }

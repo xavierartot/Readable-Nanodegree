@@ -3,6 +3,7 @@ import { withRouter, Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import sortBy from 'lodash/sortBy'
 import { connect } from 'react-redux'
+import { handleDeletePost } from '../actions/shared'
 import { LinkPadding, CenterText } from '../css/Styled.js'
 import { Button, Icon, Grid, Container } from 'semantic-ui-react'
 // components
@@ -14,19 +15,22 @@ class Home extends Component {
     posts: PropTypes.array.isRequired,
   }
   state = {
-    sortedVoted: null,
+    posts: null,
     toggleDate: true,
     toggleScore: true,
   }
+   handleDelete = (id) => {
+     this.props.dispatch(handleDeletePost(id))
+   }
   sortDate = (postSorted) => {
     const sort = sortBy(postSorted, postSorted.timestamp)
     this.state.toggleDate === true
       ? this.setState(() => ({
-        sortedVoted: sort,
+        posts: sort,
         toggleDate: false,
       }))
       : this.setState(() => ({
-        sortedVoted: sort.reverse(),
+        posts: sort.reverse(),
         toggleDate: true,
       }))
   }
@@ -35,19 +39,39 @@ class Home extends Component {
     const sort = sortBy(postSorted, num => -num.voteScore)
     this.state.toggleScore === true
       ? this.setState(() => ({
-        sortedVoted: sort,
+        posts: sort,
         toggleScore: false,
       }))
       : this.setState(() => ({
-        sortedVoted: sort.reverse(),
+        posts: sort.reverse(),
         toggleScore: true,
       }))
-    console.log(this.state.sortedVoted)
+  }
+
+  componentDidMount() {
+    const { posts, location } = this.props
+    if (posts && posts.id !== '') {
+      this.setState({
+        posts,
+        update: true,
+      })
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { posts } = this.props
+    if (prevProps.posts !== posts) {
+      if (posts && posts.id !== '') {
+        this.setState({
+          posts,
+          update: true,
+        })
+      }
+    }
   }
 
   render() {
-    const { posts } = this.props
-    const postSorted = posts
+    const { posts } = this.state
 
     return (
 
@@ -61,7 +85,7 @@ class Home extends Component {
               color="teal"
               icon
               labelPosition="left"
-              onClick={() => this.sortDate(postSorted)}
+              onClick={() => this.sortDate(posts)}
             >
               <Icon name={this.state.toggleDate === true ? 'arrow down' : 'arrow up'} />
             Sort Date
@@ -72,7 +96,7 @@ class Home extends Component {
               color="red"
               icon
               labelPosition="left"
-              onClick={() => this.voteScore(postSorted)}
+              onClick={() => this.voteScore(posts)}
             >
               <Icon name={this.state.toggleScore === true
               ? 'arrow down' : 'arrow up'}
@@ -93,8 +117,8 @@ class Home extends Component {
         </Grid>
         <div className="">
           <Posts
+            deletePost={this.handleDelete}
             posts={posts}
-            sortedVoted={this.state.sortedVoted}
           />
         </div>
       </Container>

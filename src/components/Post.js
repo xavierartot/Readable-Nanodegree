@@ -9,15 +9,15 @@ import { Divider, Icon, Card } from 'semantic-ui-react'
 import { formatDate } from '../utils/helpers'
 import ScoreButton from './ScoreButton'
 import { connect } from 'react-redux'
-import { handleDeletePost } from '../actions/shared'
+// import { handleDeletePost } from '../actions/shared'
 import { withRouter, Link } from 'react-router-dom'
 
 class Post extends Component {
-  handleDelete = (event, id) => {
-    event.preventDefault()
-    // console.log(id)
-    this.props.dispatch(handleDeletePost(id))
-  }
+  // move this method to parent: /Posts
+  // handleDelete = (id) => {
+  // console.log(id)
+  // this.props.dispatch(handleDeletePost(id))
+  // }
   handleEdit = (event, id) => {
     event.preventDefault()
     this.props.history.push({ pathname: '/newpost', search: `?id=${id}` })
@@ -26,7 +26,7 @@ class Post extends Component {
     event.preventDefault()
   }
   render() {
-    const { post } = this.props// come from Posts.js
+    const { post, deletePost } = this.props// come from Posts.js
     return (
       <Card>
         <Card.Content>
@@ -78,7 +78,7 @@ class Post extends Component {
           <a onClick={e => this.handleEdit(e, post.id)} >
             <Icon circular color="teal" name="edit" />
           </a>
-          <a onClick={e => this.handleDelete(e, post.id)}>
+          <a onClick={() => deletePost(post.id)}>
             <Icon circular color="red" name="delete" />
           </a>
         </Card.Content>

@@ -13,16 +13,12 @@ import { Card } from 'semantic-ui-react'
 
 class posts extends Component {
   render() {
-    const { posts, sortedVoted } = this.props
-    let displayPosts = posts
-    if (sortedVoted !== null) {
-      displayPosts = sortedVoted
-    }
+    const { deletePost, posts } = this.props
     return (
       <div className="posts">
         <Card.Group className="ui four column doubling stackable grid container">
-          {displayPosts && displayPosts.map(post => (
-            <Post key={post.id} post={post} />
+          {posts && posts.map(post => (
+            <Post key={post.id} deletePost={deletePost} post={post} />
           ))}
         </Card.Group>
       </div>
