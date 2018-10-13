@@ -110,10 +110,20 @@ class NewPost extends Component {
   }
 
   // getDerivedStateFromProps
-  componentWillReceiveProps(nextProps) {
+  // componentWillReceiveProps(nextProps) {
+  // const { post } = this.props
+  // console.log(2)
+  // if (post && post.id !== '') {
+  // this.setState({
+  // post,
+  // update: true,
+  // })
+  // }
+  // }
+  componentDidUpdate(prevProps, prevState) {
     const { post } = this.props
-    console.log(2)
-    if (post && post.id !== '') {
+    console.log(post)
+    if (prevProps.post !== post && prevProps.post.id !== '') {
       this.setState({
         post,
         update: true,
