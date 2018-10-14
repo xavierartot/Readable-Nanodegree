@@ -57,7 +57,6 @@ class NewPost extends Component {
           isEmpty: false,
           loadingSubmit: false,
           redirectToPost: true,
-          // redirectToHome: true,
         }))
         this.props.dispatch(handleEditPost(post))
         editPostApi(post)
@@ -93,7 +92,7 @@ class NewPost extends Component {
     })
   }
   componentDidMount() {
-    const { post, location } = this.props
+    const { post } = this.props
     // console.log(post, location.search)
     if (post && post.id !== '') {
       // console.log(post)
@@ -101,12 +100,6 @@ class NewPost extends Component {
         post,
         update: true,
       })
-    } else {
-      // console.log(post, location.search)
-      // post is empty but not the id
-      // redirect to the individual post
-      // const id = location.search.replace(/\?id=/, '')
-      // this.props.history.push({ pathname: `/page/${id}` })
     }
   }
 
@@ -129,8 +122,11 @@ class NewPost extends Component {
     if (redirectToHome) {
       return <Redirect to="/" />
     }
+    console.log(post.category, post)
     if (redirectToPost) {
-      return <Redirect to={`/page/${post.category}`} />
+      // we can't a category with Rest Api only title and body
+      // return <Redirect to={`/category/54654${post.category}`} />
+      return <Redirect to="/" />
     }
     return (
       <Container className="ui segment containerCenter" >

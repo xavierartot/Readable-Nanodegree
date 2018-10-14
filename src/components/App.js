@@ -13,6 +13,7 @@ import Header from './Header'
 import PageNotFound from './PageNotFound'
 import Page from './Page'
 import NewPost from './NewPost'
+import Categories from './Categories'
 import 'semantic-ui-css/semantic.min.css'
 
 
@@ -29,6 +30,7 @@ class App extends Component {
           <Header />
           <Switch>
             <Route component={Home} exact path="/" />
+            <Route component={Categories} path="/category/:category" />
             <Route component={Page} path="/page/:id" />
             <Route component={NewPost} exact path="/newpost" />
             <Route component={PageNotFound} />

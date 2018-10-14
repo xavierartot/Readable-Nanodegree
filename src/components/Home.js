@@ -49,7 +49,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    const { posts, location } = this.props
+    const { posts } = this.props
     if (posts && posts.id !== '') {
       this.setState({
         posts,
@@ -115,7 +115,7 @@ class Home extends Component {
             </Button>
           </Link>
         </Grid>
-        <div className="">
+        <div>
           <Posts
             deletePost={this.handleDelete}
             posts={posts}

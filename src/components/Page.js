@@ -13,7 +13,6 @@ class Page extends Component {
     comments: '',
   }
   componentDidMount() {
-    console.log(this.props)
     const { location } = this.props
     const id = location.search.replace(/\?id=/, '')
     // getCommentById(id).then((res, req) => {

@@ -10,10 +10,6 @@ class Header extends Component {
     isActive: false,
   }
 
-  // handleItemClick = (event, { name }) => {
-  // this.setState({ activeItem: name })
-  // event.preventDefault()
-  // }
   render() {
     const { categories } = this.props
     return (
@@ -33,7 +29,7 @@ class Header extends Component {
                   <NavLink
                     activeClassName="active"
                     className="item"
-                    to={`/page/${cat.path}`}
+                    to={`/category/${cat.path}`}
                   >
                     {cat.name}
                   </NavLink>
