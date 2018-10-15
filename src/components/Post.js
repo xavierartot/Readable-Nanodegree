@@ -13,17 +13,12 @@ import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 
 class Post extends Component {
-  // move this method to parent: /Posts
-  // handleDelete = (id) => {
-  // console.log(id)
-  // this.props.dispatch(handleDeletePost(id))
-  // }
   handleEdit = (event, id) => {
     event.preventDefault()
     this.props.history.push({ pathname: '/newpost', search: `?id=${id}` })
   }
-  showComment = (event) => {
-    event.preventDefault()
+  postCommentsId = (event, id) => {
+    this.props.history.push({ pathname: `/page/${id}` })
   }
   render() {
     const { post, deletePost } = this.props// come from Posts.js
@@ -57,7 +52,7 @@ class Post extends Component {
             }
           </Card.Content>
           <Card.Content extra>
-            <a onClick={this.showComment}> comments: {post.commentCount}</a>
+            <a onClick={e => this.postCommentsId(e, post.id)}> comments: {post.commentCount}</a>
             <a className="marginLeft ">
               {post.commentCount > 0 && <Icon circular color="brown" name="comments outline" />}
             </a>

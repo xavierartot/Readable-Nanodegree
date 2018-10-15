@@ -4,61 +4,135 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-8xf0y6ziyjabvozdd253nd	components/NewPost.js	/^      \/\/ '8xf0y6ziyjabvozdd253nd': {$/;"	o
-8xf0y6ziyjabvozdd253nd	reducers/posts.js	/^      \/\/ '8xf0y6ziyjabvozdd253nd': {$/;"	o
+ADD_CATEGORIES	actions/categories.js	/^export const ADD_CATEGORIES = 'ADD_CATEGORIES'$/;"	n
 App	components/App.js	/^class App extends Component {$/;"	c
 CHANGE_TEMPLATE	actions/template.js	/^export const CHANGE_TEMPLATE = 'CHANGE_TEMPLATE'$/;"	n
+Categories	components/Categories.js	/^          Categories: {category }$/;"	c
+Categories	components/Categories.js	/^          Categories: {category }$/;"	o
+Categories	components/Categories.js	/^class Categories extends Component {$/;"	c
 Categories	utils/_api.js	/^export const getCategories = () =>$/;"	c
-Click	components/Home.js	/^            onClick={() => this.newPost(postSorted)}$/;"	c
-Click	components/Home.js	/^            onClick={() => this.sortDate(postSorted)}$/;"	c
-Click	components/Home.js	/^            onClick={() => this.voteScore(postSorted)}$/;"	c
+Change	components/NewPost.js	/^                onChange={e => this.handleChange(e, 'author')}$/;"	c
+Change	components/NewPost.js	/^                onChange={e => this.handleChange(e, 'body')}$/;"	c
+Change	components/NewPost.js	/^                onChange={e => this.handleChange(e, 'category')}$/;"	c
+Change	components/NewPost.js	/^                onChange={e => this.handleChange(e, 'title')}$/;"	c
+Change	components/NewPost.js	/^  handleChange = (event, prop) => {$/;"	c
+Change	components/UpdatePost.js	/^                onChange={e => this.handleChange(e, 'author')}$/;"	c
+Change	components/UpdatePost.js	/^                onChange={e => this.handleChange(e, 'body')}$/;"	c
+Change	components/UpdatePost.js	/^                onChange={e => this.handleChange(e, 'category')}$/;"	c
+Change	components/UpdatePost.js	/^                onChange={e => this.handleChange(e, 'title')}$/;"	c
+Change	components/UpdatePost.js	/^  handleChange = (event, prop) => {$/;"	c
+Click	components/Headernav.js	/^        <Menu.Item onClick={onToggle}>$/;"	c
+Click	components/Headernav.js	/^      onClick={onPusherClick}$/;"	c
+Click	components/Home.js	/^              onClick={() => this.sortDate(posts)}$/;"	c
+Click	components/Home.js	/^              onClick={() => this.voteScore(posts)}$/;"	c
+Click	components/Post.js	/^            <a onClick={e => this.postCommentsId(e, post.id)}> comments: {post.commentCount}<\/a>$/;"	c
+Click	components/Post.js	/^          <a onClick={() => deletePost(post.id)}>$/;"	c
+Click	components/Post.js	/^          <a onClick={e => this.handleEdit(e, post.id)} >$/;"	c
+Click	components/Post.js	/^          <a onClick={this.add}>$/;"	c
 Click	components/ScoreButton.js	/^          <Button icon="minus" negative onClick={this.decrement} \/>$/;"	c
 Click	components/ScoreButton.js	/^          <Button icon="plus" onClick={this.increment} positive \/>$/;"	c
-Data	reducers/posts.js	/^      const newData = update(state, {$/;"	c
+CommentsId	components/Post.js	/^  postCommentsId = (event, id) => {$/;"	c
+DELETE_POST	actions/posts.js	/^export const DELETE_POST = 'DELETE_POST'$/;"	n
 Date	components/Home.js	/^  sortDate = (postSorted) => {$/;"	c
+Decrement	reducers/posts.js	/^      const rejectsDecrement = reject(newState, o => o.id === idPost)$/;"	c
+Delete	components/Categories.js	/^   handleDelete = (id) => {$/;"	c
+Delete	components/Home.js	/^   handleDelete = (id) => {$/;"	c
+Delete	components/Page.js	/^   handleDelete = (id) => {$/;"	c
+EDIT_POST	actions/posts.js	/^export const EDIT_POST = 'EDIT_POST'$/;"	n
+Edit	components/Post.js	/^  handleEdit = (event, id) => {$/;"	c
+EditPost	reducers/posts.js	/^      const rejectEditPost = reject(state, o => o.id === action.post.id)$/;"	c
 Header	components/Header.js	/^class Header extends Component {$/;"	c
+Headernav	components/Headernav.js	/^const Headernav = ({ categories }) => ($/;"	c
 Home	components/Home.js	/^class Home extends Component {$/;"	c
+Increment	reducers/posts.js	/^      const rejectsIncrement = reject(newState, o => o.id === idPost)$/;"	c
+Items	components/Headernav.js	/^            rightItems={rightItems}$/;"	c
+Items	components/Headernav.js	/^          <NavBarDesktop categories={categories} rightItems={rightItems} \/>$/;"	c
+Items	components/Headernav.js	/^  <NavBar categories={categories} rightItems={rightItems} \/>$/;"	c
 Localhost	registerServiceWorker.js	/^const isLocalhost = Boolean($/;"	c
+NEW_POST	actions/posts.js	/^export const NEW_POST = 'NEW_POST'$/;"	n
+NavBar	components/Headernav.js	/^class NavBar extends Component {$/;"	c
+NavBarChildren	components/Headernav.js	/^const NavBarChildren = ({ children }) => ($/;"	c
+NavBarDesktop	components/Headernav.js	/^const NavBarDesktop = ({ categories, rightItems }) => ($/;"	c
+NavBarMobile	components/Headernav.js	/^const NavBarMobile = ({$/;"	c
 NewPost	components/NewPost.js	/^class NewPost extends Component {$/;"	c
+NewPost	components/UpdatePost.js	/^class NewPost extends Component {$/;"	c
+Obj	components/UpdatePost.js	/^      const newObj = {$/;"	c
 Page	components/Page.js	/^class Page extends Component {$/;"	c
 PageNotFound	components/PageNotFound.js	/^class PageNotFound extends Component {$/;"	c
-Post	components/Home.js	/^  newPost = (postSorted) => {$/;"	c
-Post	reducers/posts.js	/^        idPost: { $set: { voteScore: 50 } },$/;"	c
+Post	components/Categories.js	/^             <Post key={post.id} deletePost={this.handleDelete} post={post} \/>$/;"	c
+Post	components/Home.js	/^            deletePost={this.handleDelete}$/;"	c
+Post	components/Page.js	/^         <Post key={postObj.id} deletePost={this.handleDelete} post={postObj} \/>$/;"	c
+Post	components/Post.js	/^class Post extends Component {$/;"	c
+Post	components/Posts.js	/^            <Post key={post.id} deletePost={deletePost} post={post} \/>$/;"	c
 Post	utils/_api.js	/^export const getPost = () =>$/;"	c
-Posts	components/Posts.js	/^              <ScoreButton displayPosts={displayPosts} idPost={post.id} vote={post.voteScore} \/>$/;"	c
+PostApi	utils/_api.js	/^export const deletePostApi = (id) => {$/;"	c
+PostApi	utils/_api.js	/^export const editPostApi = (post) => {$/;"	c
+Posts	components/Post.js	/^            <ScoreButton displayPosts={post} idPost={post.id} \/>$/;"	c
+Pusher	components/Headernav.js	/^  handlePusher = () => {$/;"	c
+PusherClick	components/Headernav.js	/^            onPusherClick={this.handlePusher}$/;"	c
 RECEIVE_CATEGORIES	actions/categories.js	/^export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES'$/;"	n
 RECEIVE_POSTS	actions/posts.js	/^export const RECEIVE_POSTS = 'RECEIVE_POSTS'$/;"	n
 SCORE_DECREMENT_POSTS	actions/posts.js	/^export const SCORE_DECREMENT_POSTS = 'SCORE_DECREMENT_POSTS'$/;"	n
 SCORE_INCREMENT_POSTS	actions/posts.js	/^export const SCORE_INCREMENT_POSTS = 'SCORE_INCREMENT_POSTS'$/;"	n
 Score	components/Home.js	/^  voteScore = (postSorted) => {$/;"	c
 ScoreButton	components/ScoreButton.js	/^class ScoreButton extends Component {$/;"	c
-Submit	components/NewPost.js	/^          <form onSubmit={this.handleSubmit} >$/;"	c
-Submit	components/NewPost.js	/^    handleSubmit = (event) => {$/;"	c
+Submit	components/NewPost.js	/^          <form className="ui form" onSubmit={this.handleSubmitAdd}>$/;"	c
+Submit	components/UpdatePost.js	/^          <form className="ui form" onSubmit={this.handleSubmit}>$/;"	c
+Submit	components/UpdatePost.js	/^  handleSubmit = (event) => {$/;"	c
+SubmitAdd	components/NewPost.js	/^  handleSubmitAdd = (event) => {$/;"	c
+Timestamp	components/Home.js	/^  const sortedTimestamp = sortBy(arrPosts, arrPosts.timestamp)$/;"	c
+Toggle	components/Headernav.js	/^            onToggle={this.handleToggle}$/;"	c
+Toggle	components/Headernav.js	/^  handleToggle = () => this.setState({ visible: !this.state.visible });$/;"	c
 Types	components/Home.js	/^  static propTypes = {$/;"	c
-Vote	reducers/posts.js	/^      const updateVote = {$/;"	c
-Voted	components/Home.js	/^            sortedVoted={this.state.sortedVoted}$/;"	c
-addNewPost	utils/_api.js	/^\/\/ export function addNewPost(post) {$/;"	f
-author	components/Posts.js	/^                author: {post.author}$/;"	o
-body	components/Posts.js	/^                body: {post.body}$/;"	o
+Value	components/NewPost.js	/^                      defaultValue={post.category}$/;"	c
+Width	components/Header.js	/^        <Responsive maxWidth={10559} minWidth={768}>$/;"	c
+Width	components/Header.js	/^        <Responsive maxWidth={768}>$/;"	c
+Width	components/Headernav.js	/^        <Responsive minWidth={Responsive.onlyTablet.minWidth}>$/;"	c
+addCategory	actions/categories.js	/^export function addCategory(category) {$/;"	f
+author	components/Post.js	/^            author: {post.author}$/;"	o
 categories	reducers/categories.js	/^export default function categories(state = {}, action) {$/;"	f
-categoriesAction	actions/categories.js	/^export function categoriesAction(categories) {$/;"	f
-category	components/Posts.js	/^                category: {post.category}$/;"	o
+category	components/Post.js	/^              category: {post.category}$/;"	o
 changeTemplate	actions/template.js	/^export function changeTemplate(color) {$/;"	f
 checkValidServiceWorker	registerServiceWorker.js	/^function checkValidServiceWorker(swUrl) {$/;"	f
-comment	components/Posts.js	/^                number comment: {post.commentCount}$/;"	o
+comments	components/Post.js	/^            <a onClick={e => this.postCommentsId(e, post.id)}> comments: {post.commentCount}<\/a>$/;"	o
 componentDidMount	components/App.js	/^  componentDidMount() {$/;"	f
-date	components/Posts.js	/^                date: {formatDate(post.timestamp)}$/;"	o
-decrementPosts	actions/posts.js	/^export function decrementPosts(vote) {$/;"	f
+componentDidMount	components/Home.js	/^  componentDidMount() {$/;"	f
+componentDidMount	components/NewPost.js	/^  componentDidMount() {$/;"	f
+componentDidMount	components/Page.js	/^  componentDidMount() {$/;"	f
+componentDidUpdate	components/Home.js	/^  componentDidUpdate(prevProps) {$/;"	f
+componentDidUpdate	components/NewPost.js	/^  componentDidUpdate(prevProps, prevState) {$/;"	f
+constructor	components/NewPost.js	/^  constructor(props) {$/;"	f
+constructor	components/UpdatePost.js	/^  constructor(props) {$/;"	f
+decrementPosts	actions/posts.js	/^export function decrementPosts(idPost, displayPosts) {$/;"	f
+deletePost	actions/posts.js	/^export function deletePost(id) {$/;"	f
+editPost	actions/posts.js	/^export function editPost(post) {$/;"	f
 formatDate	utils/helpers.js	/^export function formatDate(timestamp) {$/;"	f
 generateUID	utils/helpers.js	/^export function generateUID() {$/;"	f
 getInitialData	utils/_api.js	/^export function getInitialData() {$/;"	f
+handleAddPost	actions/shared.js	/^export function handleAddPost(post) {$/;"	f
+handleDeletePost	actions/shared.js	/^export function handleDeletePost(id) {$/;"	f
+handleEditPost	actions/shared.js	/^export function handleEditPost(post) {$/;"	f
 handleInitialData	actions/shared.js	/^export function handleInitialData() { \/\/ middleware thunk$/;"	f
 handleTemplate	actions/template.js	/^export function handleTemplate(color) {$/;"	f
 headers	utils/_api.js	/^    headers: {$/;"	o
-idPost	reducers/posts.js	/^        idPost: { $set: { voteScore: 50 } },$/;"	o
-if	components/Home.js	/^    if (postSorted) {$/;"	f
-if	components/Home.js	/^    if (this.state.redirect) {$/;"	f
-if	components/Posts.js	/^    if (sortedVoted !== null) {$/;"	f
+if	components/Home.js	/^      if (posts && posts.id !== '') {$/;"	f
+if	components/Home.js	/^    if (posts && posts.id !== '') {$/;"	f
+if	components/Home.js	/^    if (prevProps.posts !== posts) {$/;"	f
+if	components/NewPost.js	/^        if (post.id !== '') {$/;"	f
+if	components/NewPost.js	/^      if (post && post.id !== '') {$/;"	f
+if	components/NewPost.js	/^      if (post.title === '' || post.body === '') {$/;"	f
+if	components/NewPost.js	/^      if (update === false) {$/;"	f
+if	components/NewPost.js	/^      if (update === true) {$/;"	f
+if	components/NewPost.js	/^    if (post && post.id !== '') {$/;"	f
+if	components/NewPost.js	/^    if (prevProps.post !== post) {$/;"	f
+if	components/NewPost.js	/^    if (redirectToHome) {$/;"	f
+if	components/NewPost.js	/^    if (redirectToPost) {$/;"	f
+if	components/NewPost.js	/^  if (editId) {$/;"	f
+if	components/Page.js	/^     if (comments.length > 0) {$/;"	f
+if	components/UpdatePost.js	/^      if (newObj) {$/;"	f
+if	components/UpdatePost.js	/^      if (title === '' || author === '' || body === '' || category === '') {$/;"	f
+if	components/UpdatePost.js	/^    if (this.state.redirect) {$/;"	f
+if	components/UpdatePost.js	/^  \/\/ if (editId) {$/;"	f
 if	registerServiceWorker.js	/^            if (navigator.serviceWorker.controller) {$/;"	f
 if	registerServiceWorker.js	/^          if (installingWorker.state === 'installed') {$/;"	f
 if	registerServiceWorker.js	/^      if (isLocalhost) {$/;"	f
@@ -66,29 +140,40 @@ if	registerServiceWorker.js	/^    if (publicUrl.origin !== window.location.origi
 if	registerServiceWorker.js	/^  if ('serviceWorker' in navigator) {$/;"	f
 if	registerServiceWorker.js	/^  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {$/;"	f
 if	utils/_api.js	/^if (!token) { token = localStorage.token = Math.random().toString(36).substr(-8) }$/;"	f
-incrementPosts	actions/posts.js	/^export function incrementPosts(vote, idPost, post) {$/;"	f
+incrementPosts	actions/posts.js	/^export function incrementPosts(idPost, displayPosts) {$/;"	f
 mapStateToProps	components/App.js	/^function mapStateToProps({ categories, posts }) {$/;"	f
+mapStateToProps	components/Categories.js	/^function mapStateToProps({ categories, posts }, { match }) {$/;"	f
 mapStateToProps	components/Header.js	/^function mapStateToProps({ categories }, props) {$/;"	f
+mapStateToProps	components/Headernav.js	/^function mapStateToProps({ categories }, props) {$/;"	f
 mapStateToProps	components/Home.js	/^function mapStateToProps({ categories, posts }) {$/;"	f
-mapStateToProps	components/NewPost.js	/^function mapStateToProps({ category }, props) {$/;"	f
-mapStateToProps	components/Page.js	/^function mapStateToProps({ state }, props) {$/;"	f
+mapStateToProps	components/NewPost.js	/^function mapStateToProps({ categories, posts }, { location }) {$/;"	f
+mapStateToProps	components/Page.js	/^function mapStateToProps({ posts }, { location, match }) {$/;"	f
 mapStateToProps	components/ScoreButton.js	/^function mapStateToProps({ state }, props) {$/;"	f
+mapStateToProps	components/UpdatePost.js	/^function mapStateToProps({ categories, posts }, { location }) {$/;"	f
+newPost	actions/posts.js	/^export function newPost(post) {$/;"	f
+post	components/NewPost.js	/^      post: {$/;"	o
 posts	components/Posts.js	/^class posts extends Component {$/;"	c
+receiveCategories	actions/categories.js	/^export function receiveCategories(categories) {$/;"	f
 receivePosts	actions/posts.js	/^export function receivePosts(posts) {$/;"	f
 receivePosts	reducers/posts.js	/^export default function receivePosts(state = {}, action) {$/;"	f
 register	registerServiceWorker.js	/^export default function register() {$/;"	f
 registerValidSW	registerServiceWorker.js	/^function registerValidSW(swUrl) {$/;"	f
 render	components/App.js	/^  render() {$/;"	f
+render	components/Categories.js	/^   render() {$/;"	f
 render	components/Header.js	/^  render() {$/;"	f
+render	components/Headernav.js	/^  render() {$/;"	f
 render	components/Home.js	/^  render() {$/;"	f
-render	components/NewPost.js	/^    render() {$/;"	f
-render	components/Page.js	/^  render() {$/;"	f
+render	components/NewPost.js	/^  render() {$/;"	f
+render	components/Page.js	/^   render() {$/;"	f
 render	components/PageNotFound.js	/^  render() {$/;"	f
+render	components/Post.js	/^  render() {$/;"	f
 render	components/Posts.js	/^  render() {$/;"	f
 render	components/ScoreButton.js	/^  render() {$/;"	f
+render	components/UpdatePost.js	/^  render() {$/;"	f
+state	components/NewPost.js	/^    this.state = {$/;"	o
+state	components/UpdatePost.js	/^    this.state = {$/;"	o
 switch	reducers/categories.js	/^  switch (action.type) {$/;"	f
 switch	reducers/posts.js	/^  switch (action.type) {$/;"	f
 switch	reducers/template.js	/^  switch (action.type) {$/;"	f
 template	reducers/template.js	/^export default function template(state = {}, action) {$/;"	f
-title	components/Posts.js	/^                title: {post.title}$/;"	o
 unregister	registerServiceWorker.js	/^export function unregister() {$/;"	f

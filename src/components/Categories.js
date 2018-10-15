@@ -7,7 +7,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleDeletePost } from '../actions/shared'
-import { Button, Icon, Grid, Container, Card } from 'semantic-ui-react'
+import { Container, Card } from 'semantic-ui-react'
+import { CenterText } from '../css/Styled.js'
 import Post from './Post'
 
 class Categories extends Component {
@@ -16,10 +17,12 @@ class Categories extends Component {
    }
    render() {
      const { category } = this.props.match.params
-     const { posts, deletePost } = this.props
-     console.log(this.props.posts)
+     const { posts } = this.props
      return (
        <Container>
+         <CenterText>
+          Categories: {category }
+         </CenterText>
          <Card.Group className="ui four column doubling stackable grid container">
            {posts.map(post => (
              <Post key={post.id} deletePost={this.handleDelete} post={post} />

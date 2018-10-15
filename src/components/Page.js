@@ -6,58 +6,43 @@
  */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getCommentById } from '../utils/_api'
+import Post from './Post'
+import Comments from './Comments'
+import { handleCommentById, handleDeletePost } from '../actions/shared'
 
 class Page extends Component {
   state = {
     comments: '',
   }
   componentDidMount() {
-    const { location } = this.props
-    const id = location.search.replace(/\?id=/, '')
-    // getCommentById(id).then((res, req) => {
-    // console.log(res)
-    // if (res) {
-    // this.setState(() => ({
-    // comments: Object.values(res),
-    // }))
-    // }
-    // })
+    const { id } = this.props.match.params
+    this.props.dispatch(handleCommentById(id))// load comments
   }
-  render() {
-    const { match, post } = this.props
-    const { comments } = this.state
-    console.log(comments)
-    if (comments.length > 0) {
-      comments.map(e => e.id)
-    }
-    console.log(post)
-    return (
-      <div className="Page">
-        Pages
-        {match.params.id}
-        {comments.length > 0
+   handleDelete = (id) => {
+     this.props.dispatch(handleDeletePost(id))
+   }
+   render() {
+     const { postObj, comments } = this.props
+     return (
+       <div className="Page">
+         <Post key={postObj.id} deletePost={this.handleDelete} post={postObj} />
+         <Comments></Comments>
+         {comments.length > 0
         ? comments.map(comment => (<li key={comment.id}>{comment.id}</li>))
         : 'no comments'
         }
-
-      </div>
-    )
-  }
+       </div>
+     )
+   }
 }
-function mapStateToProps({ posts, categories }, { location }) {
-  const id = location.search.replace(/\?id=/, '')
-  console.log(Object.values(posts))
-  const t = Object.values(posts)
-  console.log(t)
-  const post = Object.values(posts).filter((e) => {
-    e.id === id
-  })
-  console.log(post)
-  // console.log(posts, categories)
+function mapStateToProps({ posts, comments }, { location, match }) {
+  const { id } = match.params
+  const post = Object.values(posts).filter(e => e.id === id)
+  const postObj = Object.assign({}, ...post)
+  // console.log(comments)
   return {
-    post,
-    categories,
+    postObj,
+    comments: Object.values(comments),
   }
 }
 export default connect(mapStateToProps)(Page)

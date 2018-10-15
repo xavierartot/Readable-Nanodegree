@@ -1,7 +1,8 @@
 import { receiveCategories } from './categories'
+import { receiveCommentsById } from './comments'
 import { editPost, receivePosts, deletePost, newPost } from './posts'
 // API
-import { editPostApi, addNewPost, getInitialData, deletePostApi } from '../utils/_api'
+import { getCommentById, editPostApi, addNewPost, getInitialData, deletePostApi } from '../utils/_api'
 
 export function handleInitialData() { // middleware thunk
   return (dispatch, getState) => { // thunk pattern with redux-thunk
@@ -33,5 +34,11 @@ export function handleEditPost(post) {
   return (dispatch, getState) => { // thunk pattern with redux-thunk
     dispatch(editPost(post))
     editPostApi(post)
+  }
+}
+export function handleCommentById(id) {
+  return (dispatch, getState) => { // thunk pattern with redux-thunk
+    getCommentById(id).then(res =>
+      dispatch(receiveCommentsById(res)))
   }
 }
