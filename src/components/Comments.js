@@ -11,14 +11,16 @@ import ScoreButton from './ScoreButton'
 import { connect } from 'react-redux'
 // actions
 // import { incrementComment, decrementComment } from '../actions/comments'
-import { handleIncrementComment, handleDecrementComment } from '../actions/shared'
+import { handleDeleteComment, handleIncrementComment, handleDecrementComment } from '../actions/shared'
 
 class Comments extends Component {
   handleEdit = (event) => {
+    // const { dispatch, obj } = this.props
     event.preventDefault()
   }
-  deleteComment = (event) => {
-    event.preventDefault()
+  deleteComment = (obj) => {
+    const { dispatch } = this.props
+    dispatch(handleDeleteComment(obj))
   }
   increment = () => {
     const { dispatch, obj } = this.props
@@ -37,24 +39,20 @@ class Comments extends Component {
         </div>
         <p>{obj.body}</p>
         <p> created {formatDate(obj.timestamp)}</p>
-        <p>
-          {obj.voteScore}
-        </p>
-        <p>{obj.deleted}</p>
         <ScoreButton
           decrement={this.decrement}
           displayPosts={obj}
           idPost={obj.id}
           increment={this.increment}
         />
-        <List className="containerCenter iconsGroup " >
+        <List className="iconsGroup horizontal" style={{ marginTop: '1rem' }}>
           <List.Item onClick={this.add}>
             <Icon circular color="pink" name="user" />
           </List.Item>
           <List.Item onClick={e => this.handleEdit(e, obj.id)} >
             <Icon circular color="teal" name="edit" />
           </List.Item>
-          <List.Item onClick={() => this.deleteComment(obj.id)}>
+          <List.Item onClick={() => this.deleteComment(obj)}>
             <Icon circular color="red" name="delete" />
           </List.Item>
         </List>

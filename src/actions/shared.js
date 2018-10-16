@@ -1,8 +1,8 @@
 import { receiveCategories } from './categories'
-import { incrementComment, decrementComment, receiveCommentsById } from './comments'
+import { deleteComment, incrementComment, decrementComment, receiveCommentsById } from './comments'
 import { decrementPosts, incrementPosts, editPost, receivePosts, deletePost, newPost } from './posts'
 // API
-import { incrementDecrementComment, incrementDecrementPost, getCommentById, editPostApi, addNewPost, getInitialData, deletePostApi } from '../utils/_api'
+import { deleteCommentApi, incrementDecrementComment, incrementDecrementPost, getCommentById, editPostApi, addNewPost, getInitialData, deletePostApi } from '../utils/_api'
 
 export function handleInitialData() { // middleware thunk
   return (dispatch, getState) => { // thunk pattern with redux-thunk
@@ -21,13 +21,13 @@ export function handleInitialData() { // middleware thunk
 export function handleDeletePost(id) {
   return (dispatch, getState) => { // thunk pattern with redux-thunk
     dispatch(deletePost(id))
-    deletePostApi(id)
+    deletePostApi(id)// api
   }
 }
 export function handleAddPost(post) {
   return (dispatch, getState) => { // thunk pattern with redux-thunk
     dispatch(newPost(post))
-    addNewPost(post)
+    addNewPost(post)// api
   }
 }
 export function handleEditPost(post) {
@@ -45,25 +45,31 @@ export function handleCommentById(id) {
 export function handleIncrementPost(id, post) {
   return (dispatch, getState) => { // thunk pattern with redux-thunk
     dispatch(incrementPosts(id, post))
-    incrementDecrementPost(post)
+    incrementDecrementPost(post)// api
   }
 }
 export function handleDecrementPost(id, post) {
   return (dispatch, getState) => { // thunk pattern with redux-thunk
     dispatch(decrementPosts(id, post))
-    incrementDecrementPost(post)
+    incrementDecrementPost(post)// api
   }
 }
 export function handleDecrementComment(id, comment) {
   return (dispatch, getState) => { // thunk pattern with redux-thunk
     dispatch(decrementComment(id, comment))
-    incrementDecrementComment(comment)
+    incrementDecrementComment(comment)// api
   }
 }
 export function handleIncrementComment(id, comment) {
   return (dispatch, getState) => { // thunk pattern with redux-thunk
     dispatch(incrementComment(id, comment))
-    incrementDecrementComment(comment)
+    incrementDecrementComment(comment)// api
   }
 }
 
+export function handleDeleteComment(comment) {
+  return (dispatch, getState) => { // thunk pattern with redux-thunk
+    dispatch(deleteComment(comment))
+    deleteCommentApi(comment)
+  }
+}

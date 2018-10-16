@@ -2,6 +2,7 @@ export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 export const ADD_COMMENTS = 'ADD_COMMENTS'
 export const INCREMENT_COMMENTS = 'INCREMENT_COMMENTS'
 export const DECREMENT_COMMENTS = 'DECREMENT_COMMENTS'
+export const DELETE_COMMENTS = 'DELETE_COMMENTS'
 
 export function receiveCommentsById(comments) {
   return {
@@ -27,5 +28,11 @@ export function incrementComment(id, comment) {
     type: INCREMENT_COMMENTS,
     comment,
     id,
+  }
+}
+export function deleteComment(comment) {
+  return {
+    type: DELETE_COMMENTS,
+    comment,
   }
 }

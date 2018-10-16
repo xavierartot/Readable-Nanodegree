@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import Post from './Post'
 import Comments from './Comments'
 import { handleCommentById, handleDeletePost } from '../actions/shared'
-import { Grid, Container } from 'semantic-ui-react'
+import { Grid, Container, Header } from 'semantic-ui-react'
 
 class Page extends Component {
   state = {
@@ -33,6 +33,7 @@ class Page extends Component {
        >
          <Grid.Row >
            <Container>
+             <Header as="h1">Comments</Header>
              <Post
                key={postObj.id}
                center="centered"
@@ -56,8 +57,9 @@ class Page extends Component {
 function mapStateToProps({ posts, comments }, { location, match }) {
   const { id } = match.params
   const post = Object.values(posts).filter(e => e.id === id)
-  const postObj = Object.assign({}, ...post)
-  // console.log(comments)
+  const postObj = Object.assign({}, ...post)// get the post
+  console.log(comments)
+
   return {
     postObj,
     comments: Object.values(comments),

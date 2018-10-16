@@ -96,6 +96,17 @@ export const incrementDecrementPost = (post) => {
   }).then(res => res)
     .catch(err => err)
 }
+export const deleteCommentApi = (comment) => {
+  const { deleted } = comment
+  fetch(`${api}/comments/${comment.id}`, {
+    method: 'PUT',
+    body: JSON.stringify({ deleted }),
+    headers: {
+      ...headers,
+    },
+  }).then(res => res)
+    .catch(err => err)
+}
 
 export const incrementDecrementComment = (post) => {
   const { voteScore } = post

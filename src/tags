@@ -22,7 +22,7 @@ Change	components/UpdatePost.js	/^                onChange={e => this.handleChan
 Change	components/UpdatePost.js	/^                onChange={e => this.handleChange(e, 'category')}$/;"	c
 Change	components/UpdatePost.js	/^                onChange={e => this.handleChange(e, 'title')}$/;"	c
 Change	components/UpdatePost.js	/^  handleChange = (event, prop) => {$/;"	c
-Click	components/Comments.js	/^          <List.Item onClick={() => this.deleteComment(obj.id)}>$/;"	c
+Click	components/Comments.js	/^          <List.Item onClick={() => this.deleteComment(obj)}>$/;"	c
 Click	components/Comments.js	/^          <List.Item onClick={e => this.handleEdit(e, obj.id)} >$/;"	c
 Click	components/Comments.js	/^          <List.Item onClick={this.add}>$/;"	c
 Click	components/Headernav.js	/^        <Menu.Item onClick={onToggle}>$/;"	c
@@ -35,17 +35,22 @@ Click	components/Post.js	/^          <a onClick={e => this.handleEdit(e, post.id
 Click	components/Post.js	/^          <a onClick={this.add}>$/;"	c
 Click	components/ScoreButton.js	/^          <Button icon="minus" negative onClick={decrement} \/>$/;"	c
 Click	components/ScoreButton.js	/^          <Button icon="plus" onClick={increment} positive \/>$/;"	c
-Comment	components/Comments.js	/^  deleteComment = (event) => {$/;"	c
+Comment	components/Comments.js	/^  deleteComment = (obj) => {$/;"	c
+CommentApi	utils/_api.js	/^export const deleteCommentApi = (comment) => {$/;"	c
 Comments	components/Comments.js	/^class Comments extends Component {$/;"	c
 CommentsId	components/Post.js	/^  postCommentsId = (event, id) => {$/;"	c
 DECREMENT_COMMENTS	actions/comments.js	/^export const DECREMENT_COMMENTS = 'DECREMENT_COMMENTS'$/;"	n
+DELETE_COMMENTS	actions/comments.js	/^export const DELETE_COMMENTS = 'DELETE_COMMENTS'$/;"	n
 DELETE_POST	actions/posts.js	/^export const DELETE_POST = 'DELETE_POST'$/;"	n
 Date	components/Home.js	/^  sortDate = (postSorted) => {$/;"	c
 Decrement	reducers/comments.js	/^      const rejectsDecrement = reject(state, o => o.id === id)$/;"	c
 Decrement	reducers/posts.js	/^      const rejectsDecrement = reject(newState, o => o.id === idPost)$/;"	c
+DecrementComment	utils/_api.js	/^export const incrementDecrementComment = (post) => {$/;"	c
+DecrementPost	utils/_api.js	/^export const incrementDecrementPost = (post) => {$/;"	c
 Delete	components/Categories.js	/^   handleDelete = (id) => {$/;"	c
 Delete	components/Home.js	/^   handleDelete = (id) => {$/;"	c
 Delete	components/Page.js	/^   handleDelete = (id) => {$/;"	c
+Deleted	reducers/comments.js	/^      const rejectsDeleted = reject(state, o => o.id === comment.id)$/;"	c
 EDIT_POST	actions/posts.js	/^export const EDIT_POST = 'EDIT_POST'$/;"	n
 Edit	components/Comments.js	/^  handleEdit = (event) => {$/;"	c
 Edit	components/Post.js	/^  handleEdit = (event, id) => {$/;"	c
@@ -123,6 +128,7 @@ constructor	components/NewPost.js	/^  constructor(props) {$/;"	f
 constructor	components/UpdatePost.js	/^  constructor(props) {$/;"	f
 decrementComment	actions/comments.js	/^export function decrementComment(id, comment) {$/;"	f
 decrementPosts	actions/posts.js	/^export function decrementPosts(idPost, post) {$/;"	f
+deleteComment	actions/comments.js	/^export function deleteComment(comment) {$/;"	f
 deletePost	actions/posts.js	/^export function deletePost(id) {$/;"	f
 editPost	actions/posts.js	/^export function editPost(post) {$/;"	f
 formatDate	utils/helpers.js	/^export function formatDate(timestamp) {$/;"	f
@@ -130,8 +136,12 @@ generateUID	utils/helpers.js	/^export function generateUID() {$/;"	f
 getInitialData	utils/_api.js	/^export function getInitialData() {$/;"	f
 handleAddPost	actions/shared.js	/^export function handleAddPost(post) {$/;"	f
 handleCommentById	actions/shared.js	/^export function handleCommentById(id) {$/;"	f
+handleDecrementComment	actions/shared.js	/^export function handleDecrementComment(id, comment) {$/;"	f
+handleDecrementPost	actions/shared.js	/^export function handleDecrementPost(id, post) {$/;"	f
+handleDeleteComment	actions/shared.js	/^export function handleDeleteComment(comment) {$/;"	f
 handleDeletePost	actions/shared.js	/^export function handleDeletePost(id) {$/;"	f
 handleEditPost	actions/shared.js	/^export function handleEditPost(post) {$/;"	f
+handleIncrementComment	actions/shared.js	/^export function handleIncrementComment(id, comment) {$/;"	f
 handleIncrementPost	actions/shared.js	/^export function handleIncrementPost(id, post) {$/;"	f
 handleInitialData	actions/shared.js	/^export function handleInitialData() { \/\/ middleware thunk$/;"	f
 handleTemplate	actions/template.js	/^export function handleTemplate(color) {$/;"	f
