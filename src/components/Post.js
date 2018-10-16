@@ -11,7 +11,19 @@ import ScoreButton from './ScoreButton'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 
+// actions
+import { handleIncrementPost, handleDecrementPost } from '../actions/shared'
+
+
 class Post extends Component {
+  increment = () => {
+    const { dispatch, post } = this.props
+    dispatch(handleIncrementPost(post.id, post))
+  }
+  decrement = () => {
+    const { dispatch, post } = this.props
+    dispatch(handleDecrementPost(post.id, post))
+  }
   handleEdit = (event, id) => {
     event.preventDefault()
     this.props.history.push({ pathname: '/newpost', search: `?id=${id}` })
@@ -43,7 +55,12 @@ class Post extends Component {
             </Link>
           </Card.Content>
           <Card.Content extra>
-            <ScoreButton displayPosts={post} idPost={post.id} />
+            <ScoreButton
+              decrement={this.decrement}
+              displayPosts={post}
+              idPost={post.id}
+              increment={this.increment}
+            />
           </Card.Content>
           <Card.Content extra>
             {

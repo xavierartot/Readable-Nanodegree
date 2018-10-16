@@ -8,37 +8,23 @@ import React, { Component } from 'react'
 import { Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
-// actions
-import { incrementPosts, decrementPosts } from '../actions/posts'
-
 class ScoreButton extends Component {
-  increment = () => {
-    const {
-      idPost, dispatch, displayPosts,
-    } = this.props
-    dispatch(incrementPosts(idPost, displayPosts))
-    console.log(this.props)
-  }
-  decrement = () => {
-    const {
-      idPost, dispatch, displayPosts,
-    } = this.props
-    dispatch(decrementPosts(idPost, displayPosts))
-  }
   render() {
-    const { vote } = this.props
+    const {
+      vote, increment, decrement,
+    } = this.props
     return (
       <div>
         <Button.Group>
-          <Button icon="plus" onClick={this.increment} positive />
+          <Button icon="plus" onClick={increment} positive />
           <Button.Or text={vote} />
-          <Button icon="minus" negative onClick={this.decrement} />
+          <Button icon="minus" negative onClick={decrement} />
         </Button.Group>
       </div>
     )
   }
 }
-function mapStateToProps({ state }, props) {
+function mapStateToProps(state, props) {
   return {
     state,
     vote: props.displayPosts.voteScore,

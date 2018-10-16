@@ -85,39 +85,29 @@ export const editPostApi = (post) => {
   }).then(res => res)
 }
 
-// app.post('/posts', bodyParser.json(), (req, res) => {
-// posts.add(req.token, req.body)
-// .then(
-// data => res.send(data),
-// (error) => {
-// console.error(error)
-// res.status(500).send({
-// error: 'There was an error.',
-// })
-// },
-// )
-// })
-// api.add(newComment)
-// .then((c, e) => {
-// console.log(c, e)
-// })
-// .catch(err => console.log(err))
+export const incrementDecrementPost = (post) => {
+  const { voteScore } = post
+  fetch(`${api}/posts/${post.id}`, {
+    method: 'PUT',
+    body: JSON.stringify({ voteScore }),
+    headers: {
+      ...headers,
+    },
+  }).then(res => res)
+    .catch(err => err)
+}
 
-
-// app.post('/comments/:id', bodyParser.json(), (req, res) => {
-// const { option } = req.body
-// comments.vote(req.token, req.params.id, option)
-// .then(
-// data => res.send(data),
-// (error) => {
-// console.error(error)
-// res.status(500).send({
-// error: 'There was an error.',
-// })
-// },
-// )
-// })
-
+export const incrementDecrementComment = (post) => {
+  const { voteScore } = post
+  fetch(`${api}/comments/${post.id}`, {
+    method: 'PUT',
+    body: JSON.stringify({ voteScore }),
+    headers: {
+      ...headers,
+    },
+  }).then(res => res)
+    .catch(err => err)
+}
 export const add = comment =>
   fetch(
     `${api}/comments/${comment.id}`,

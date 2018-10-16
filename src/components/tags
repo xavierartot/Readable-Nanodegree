@@ -1,0 +1,137 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+App	App.js	/^class App extends Component {$/;"	c
+Categories	Categories.js	/^          Categories: {category }$/;"	c
+Categories	Categories.js	/^          Categories: {category }$/;"	o
+Categories	Categories.js	/^class Categories extends Component {$/;"	c
+Change	NewPost.js	/^                onChange={e => this.handleChange(e, 'author')}$/;"	c
+Change	NewPost.js	/^                onChange={e => this.handleChange(e, 'body')}$/;"	c
+Change	NewPost.js	/^                onChange={e => this.handleChange(e, 'category')}$/;"	c
+Change	NewPost.js	/^                onChange={e => this.handleChange(e, 'title')}$/;"	c
+Change	NewPost.js	/^  handleChange = (event, prop) => {$/;"	c
+Change	UpdatePost.js	/^                onChange={e => this.handleChange(e, 'author')}$/;"	c
+Change	UpdatePost.js	/^                onChange={e => this.handleChange(e, 'body')}$/;"	c
+Change	UpdatePost.js	/^                onChange={e => this.handleChange(e, 'category')}$/;"	c
+Change	UpdatePost.js	/^                onChange={e => this.handleChange(e, 'title')}$/;"	c
+Change	UpdatePost.js	/^  handleChange = (event, prop) => {$/;"	c
+Click	Comments.js	/^          <List.Item onClick={() => this.deleteComment(obj.id)}>$/;"	c
+Click	Comments.js	/^          <List.Item onClick={e => this.handleEdit(e, obj.id)} >$/;"	c
+Click	Comments.js	/^          <List.Item onClick={this.add}>$/;"	c
+Click	Headernav.js	/^        <Menu.Item onClick={onToggle}>$/;"	c
+Click	Headernav.js	/^      onClick={onPusherClick}$/;"	c
+Click	Home.js	/^              onClick={() => this.sortDate(posts)}$/;"	c
+Click	Home.js	/^              onClick={() => this.voteScore(posts)}$/;"	c
+Click	Post.js	/^            <a onClick={e => this.postCommentsId(e, post.id)}> comments: {post.commentCount}<\/a>$/;"	c
+Click	Post.js	/^          <a onClick={() => deletePost(post.id)}>$/;"	c
+Click	Post.js	/^          <a onClick={e => this.handleEdit(e, post.id)} >$/;"	c
+Click	Post.js	/^          <a onClick={this.add}>$/;"	c
+Click	ScoreButton.js	/^          <Button icon="minus" negative onClick={decrement} \/>$/;"	c
+Click	ScoreButton.js	/^          <Button icon="plus" onClick={increment} positive \/>$/;"	c
+Comment	Comments.js	/^  deleteComment = (event) => {$/;"	c
+Comments	Comments.js	/^class Comments extends Component {$/;"	c
+CommentsId	Post.js	/^  postCommentsId = (event, id) => {$/;"	c
+Date	Home.js	/^  sortDate = (postSorted) => {$/;"	c
+Delete	Categories.js	/^   handleDelete = (id) => {$/;"	c
+Delete	Home.js	/^   handleDelete = (id) => {$/;"	c
+Delete	Page.js	/^   handleDelete = (id) => {$/;"	c
+Edit	Comments.js	/^  handleEdit = (event) => {$/;"	c
+Edit	Post.js	/^  handleEdit = (event, id) => {$/;"	c
+Header	Header.js	/^class Header extends Component {$/;"	c
+Headernav	Headernav.js	/^const Headernav = ({ categories }) => ($/;"	c
+Home	Home.js	/^class Home extends Component {$/;"	c
+Items	Headernav.js	/^            rightItems={rightItems}$/;"	c
+Items	Headernav.js	/^          <NavBarDesktop categories={categories} rightItems={rightItems} \/>$/;"	c
+Items	Headernav.js	/^  <NavBar categories={categories} rightItems={rightItems} \/>$/;"	c
+Name	Post.js	/^      <Card className={center}>$/;"	c
+NavBar	Headernav.js	/^class NavBar extends Component {$/;"	c
+NavBarChildren	Headernav.js	/^const NavBarChildren = ({ children }) => ($/;"	c
+NavBarDesktop	Headernav.js	/^const NavBarDesktop = ({ categories, rightItems }) => ($/;"	c
+NavBarMobile	Headernav.js	/^const NavBarMobile = ({$/;"	c
+NewPost	NewPost.js	/^class NewPost extends Component {$/;"	c
+NewPost	UpdatePost.js	/^class NewPost extends Component {$/;"	c
+Obj	UpdatePost.js	/^      const newObj = {$/;"	c
+Page	Page.js	/^class Page extends Component {$/;"	c
+PageNotFound	PageNotFound.js	/^class PageNotFound extends Component {$/;"	c
+Post	Categories.js	/^             <Post key={post.id} deletePost={this.handleDelete} post={post} \/>$/;"	c
+Post	Comments.js	/^          idPost={obj.id}$/;"	c
+Post	Home.js	/^            deletePost={this.handleDelete}$/;"	c
+Post	Page.js	/^               deletePost={this.handleDelete}$/;"	c
+Post	Post.js	/^              idPost={post.id}$/;"	c
+Post	Post.js	/^class Post extends Component {$/;"	c
+Post	Posts.js	/^            <Post key={post.id} deletePost={deletePost} post={post} \/>$/;"	c
+Posts	Comments.js	/^          displayPosts={obj}$/;"	c
+Posts	Post.js	/^              displayPosts={post}$/;"	c
+Pusher	Headernav.js	/^  handlePusher = () => {$/;"	c
+PusherClick	Headernav.js	/^            onPusherClick={this.handlePusher}$/;"	c
+Score	Home.js	/^  voteScore = (postSorted) => {$/;"	c
+ScoreButton	ScoreButton.js	/^class ScoreButton extends Component {$/;"	c
+Submit	NewPost.js	/^          <form className="ui form" onSubmit={this.handleSubmitAdd}>$/;"	c
+Submit	UpdatePost.js	/^          <form className="ui form" onSubmit={this.handleSubmit}>$/;"	c
+Submit	UpdatePost.js	/^  handleSubmit = (event) => {$/;"	c
+SubmitAdd	NewPost.js	/^  handleSubmitAdd = (event) => {$/;"	c
+Timestamp	Home.js	/^  const sortedTimestamp = sortBy(arrPosts, arrPosts.timestamp)$/;"	c
+Toggle	Headernav.js	/^            onToggle={this.handleToggle}$/;"	c
+Toggle	Headernav.js	/^  handleToggle = () => this.setState({ visible: !this.state.visible });$/;"	c
+Types	Home.js	/^  static propTypes = {$/;"	c
+Value	NewPost.js	/^                      defaultValue={post.category}$/;"	c
+Width	Header.js	/^        <Responsive maxWidth={10559} minWidth={768}>$/;"	c
+Width	Header.js	/^        <Responsive maxWidth={768}>$/;"	c
+Width	Headernav.js	/^        <Responsive minWidth={Responsive.onlyTablet.minWidth}>$/;"	c
+author	Post.js	/^            author: {post.author}$/;"	o
+category	Post.js	/^              category: {post.category}$/;"	o
+comments	Post.js	/^            <a onClick={e => this.postCommentsId(e, post.id)}> comments: {post.commentCount}<\/a>$/;"	o
+componentDidMount	App.js	/^  componentDidMount() {$/;"	f
+componentDidMount	Home.js	/^  componentDidMount() {$/;"	f
+componentDidMount	NewPost.js	/^  componentDidMount() {$/;"	f
+componentDidMount	Page.js	/^  componentDidMount() {$/;"	f
+componentDidUpdate	Home.js	/^  componentDidUpdate(prevProps) {$/;"	f
+componentDidUpdate	NewPost.js	/^  componentDidUpdate(prevProps, prevState) {$/;"	f
+constructor	NewPost.js	/^  constructor(props) {$/;"	f
+constructor	UpdatePost.js	/^  constructor(props) {$/;"	f
+if	Home.js	/^      if (posts && posts.id !== '') {$/;"	f
+if	Home.js	/^    if (posts && posts.id !== '') {$/;"	f
+if	Home.js	/^    if (prevProps.posts !== posts) {$/;"	f
+if	NewPost.js	/^        if (post.id !== '') {$/;"	f
+if	NewPost.js	/^      if (post && post.id !== '') {$/;"	f
+if	NewPost.js	/^      if (post.title === '' || post.body === '') {$/;"	f
+if	NewPost.js	/^      if (update === false) {$/;"	f
+if	NewPost.js	/^      if (update === true) {$/;"	f
+if	NewPost.js	/^    if (post && post.id !== '') {$/;"	f
+if	NewPost.js	/^    if (prevProps.post !== post) {$/;"	f
+if	NewPost.js	/^    if (redirectToHome) {$/;"	f
+if	NewPost.js	/^    if (redirectToPost) {$/;"	f
+if	NewPost.js	/^  if (editId) {$/;"	f
+if	UpdatePost.js	/^      if (newObj) {$/;"	f
+if	UpdatePost.js	/^      if (title === '' || author === '' || body === '' || category === '') {$/;"	f
+if	UpdatePost.js	/^    if (this.state.redirect) {$/;"	f
+if	UpdatePost.js	/^  \/\/ if (editId) {$/;"	f
+mapStateToProps	App.js	/^function mapStateToProps({ categories, posts }) {$/;"	f
+mapStateToProps	Categories.js	/^function mapStateToProps({ categories, posts }, { match }) {$/;"	f
+mapStateToProps	Header.js	/^function mapStateToProps({ categories }, props) {$/;"	f
+mapStateToProps	Headernav.js	/^function mapStateToProps({ categories }, props) {$/;"	f
+mapStateToProps	Home.js	/^function mapStateToProps({ categories, posts }) {$/;"	f
+mapStateToProps	NewPost.js	/^function mapStateToProps({ categories, posts }, { location }) {$/;"	f
+mapStateToProps	Page.js	/^function mapStateToProps({ posts, comments }, { location, match }) {$/;"	f
+mapStateToProps	ScoreButton.js	/^function mapStateToProps(state, props) {$/;"	f
+mapStateToProps	UpdatePost.js	/^function mapStateToProps({ categories, posts }, { location }) {$/;"	f
+post	NewPost.js	/^      post: {$/;"	o
+posts	Posts.js	/^class posts extends Component {$/;"	c
+render	App.js	/^  render() {$/;"	f
+render	Categories.js	/^   render() {$/;"	f
+render	Comments.js	/^  render() {$/;"	f
+render	Header.js	/^  render() {$/;"	f
+render	Headernav.js	/^  render() {$/;"	f
+render	Home.js	/^  render() {$/;"	f
+render	NewPost.js	/^  render() {$/;"	f
+render	Page.js	/^   render() {$/;"	f
+render	PageNotFound.js	/^  render() {$/;"	f
+render	Post.js	/^  render() {$/;"	f
+render	Posts.js	/^  render() {$/;"	f
+render	ScoreButton.js	/^  render() {$/;"	f
+render	UpdatePost.js	/^  render() {$/;"	f
+state	NewPost.js	/^    this.state = {$/;"	o
+state	UpdatePost.js	/^    this.state = {$/;"	o

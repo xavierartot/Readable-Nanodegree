@@ -11,18 +11,18 @@ export function receivePosts(posts) {
     posts,
   }
 }
-export function incrementPosts(idPost, displayPosts) {
+export function incrementPosts(idPost, post) {
   return {
     type: SCORE_INCREMENT_POSTS,
     idPost,
-    displayPosts,
+    post,
   }
 }
-export function decrementPosts(idPost, displayPosts) {
+export function decrementPosts(idPost, post) {
   return {
     type: SCORE_DECREMENT_POSTS,
     idPost,
-    displayPosts,
+    post,
   }
 }
 export function newPost(post) {

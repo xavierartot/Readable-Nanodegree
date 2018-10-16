@@ -10,7 +10,7 @@ import {
 import reject from 'lodash/reject'
 
 export default function receivePosts(state = {}, action) {
-  const { idPost, displayPosts } = action// declaration to increment and decrement
+  const { idPost, post } = action// declaration to increment and decrement
   const newState = state// declaration to increment and decrement
   let size
   switch (action.type) {
@@ -24,20 +24,20 @@ export default function receivePosts(state = {}, action) {
       // I'm deleting the object
       const rejectsIncrement = reject(newState, o => o.id === idPost)
       // increment the new vote
-      displayPosts.voteScore++
+      post.voteScore++
       const updateVote = [
         ...rejectsIncrement,
-        displayPosts,
+        post,
       ]
       state = Object.assign({}, updateVote)
       return state
     case SCORE_DECREMENT_POSTS:
       // see the comment above
       const rejectsDecrement = reject(newState, o => o.id === idPost)
-      displayPosts.voteScore--
+      post.voteScore--
       const updateVoteDecrement = [
         ...rejectsDecrement,
-        displayPosts,
+        post,
       ]
       state = Object.assign({}, updateVoteDecrement)
       return state

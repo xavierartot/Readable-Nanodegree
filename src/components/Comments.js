@@ -8,6 +8,10 @@ import React, { Component } from 'react'
 import { Segment, List, Icon } from 'semantic-ui-react'
 import { formatDate } from '../utils/helpers'
 import ScoreButton from './ScoreButton'
+import { connect } from 'react-redux'
+// actions
+// import { incrementComment, decrementComment } from '../actions/comments'
+import { handleIncrementComment, handleDecrementComment } from '../actions/shared'
 
 class Comments extends Component {
   handleEdit = (event) => {
@@ -16,10 +20,18 @@ class Comments extends Component {
   deleteComment = (event) => {
     event.preventDefault()
   }
+  increment = () => {
+    const { dispatch, obj } = this.props
+    dispatch(handleIncrementComment(obj.id, obj))
+  }
+  decrement = () => {
+    const { dispatch, obj } = this.props
+    dispatch(handleDecrementComment(obj.id, obj))
+  }
   render() {
-    const { obj } = this.props
+    const { obj } = this.props// comment
     return (
-      <Segment style={{minWidth: '60%'}} compact >
+      <Segment compact style={{ minWidth: '60%' }} >
         <div className="header ui">
           {obj.author}
         </div>
@@ -29,8 +41,12 @@ class Comments extends Component {
           {obj.voteScore}
         </p>
         <p>{obj.deleted}</p>
-        <ScoreButton displayPosts={obj} idPost={obj.id} />
-
+        <ScoreButton
+          decrement={this.decrement}
+          displayPosts={obj}
+          idPost={obj.id}
+          increment={this.increment}
+        />
         <List className="containerCenter iconsGroup " >
           <List.Item onClick={this.add}>
             <Icon circular color="pink" name="user" />
@@ -46,5 +62,5 @@ class Comments extends Component {
     )
   }
 }
-export default Comments
+export default connect()(Comments)
 
