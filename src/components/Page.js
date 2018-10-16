@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import Post from './Post'
 import Comments from './Comments'
 import { handleCommentById, handleDeletePost } from '../actions/shared'
+import { Grid, Container } from 'semantic-ui-react'
 
 class Page extends Component {
   state = {
@@ -24,14 +25,31 @@ class Page extends Component {
    render() {
      const { postObj, comments } = this.props
      return (
-       <div className="Page">
-         <Post key={postObj.id} deletePost={this.handleDelete} post={postObj} />
-         <Comments></Comments>
-         {comments.length > 0
-        ? comments.map(comment => (<li key={comment.id}>{comment.id}</li>))
-        : 'no comments'
-        }
-       </div>
+       <Grid
+         centered
+         className="page"
+         style={{ marginTop: '2rem' }}
+         verticalAlign="middle"
+       >
+         <Grid.Row >
+           <Container>
+             <Post
+               key={postObj.id}
+               center="centered"
+               deletePost={this.handleDelete}
+               post={postObj}
+             />
+             <div className="ui grid centered">
+               <Grid.Column className="containerCenter">
+                 {comments.length > 0
+             ? comments.map(comment => (<Comments key={comment.id} obj={comment} />))
+          : 'no comments'
+          }
+               </Grid.Column>
+             </div>
+           </Container>
+         </Grid.Row>
+       </Grid>
      )
    }
 }

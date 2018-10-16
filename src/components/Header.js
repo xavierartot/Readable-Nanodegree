@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { withRouter, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 // import { NavBrand, HeaderNav, NavLinkTop } from '../css/Styled'
-import { Menu, Responsive } from 'semantic-ui-react'
+import { Menu, Responsive, Icon } from 'semantic-ui-react'
 import '../css/helpers.css'
 
 class Header extends Component {
@@ -15,13 +15,13 @@ class Header extends Component {
     return (
       <Fragment>
         <Responsive maxWidth={10559} minWidth={768}>
-          <Menu className="navbar">
+          <Menu className="navbar large labeled pointing">
             <NavLink
               activeClassName="activeBrand"
               className="brand item"
               to="/"
             >
-              Overview Project
+              <Icon name="home" />
             </NavLink>
             {Array.isArray(categories) && (
               categories.map((cat, i) => (

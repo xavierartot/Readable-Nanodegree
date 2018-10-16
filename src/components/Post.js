@@ -9,7 +9,6 @@ import { Divider, Icon, Card } from 'semantic-ui-react'
 import { formatDate } from '../utils/helpers'
 import ScoreButton from './ScoreButton'
 import { connect } from 'react-redux'
-// import { handleDeletePost } from '../actions/shared'
 import { withRouter, Link } from 'react-router-dom'
 
 class Post extends Component {
@@ -21,9 +20,9 @@ class Post extends Component {
     this.props.history.push({ pathname: `/page/${id}` })
   }
   render() {
-    const { post, deletePost } = this.props// come from Posts.js
+    const { post, deletePost, center } = this.props// come from Posts.js; center come from post
     return (
-      <Card>
+      <Card className={center}>
         <Card.Content>
           <Card.Header>{post.title}</Card.Header>
           <Card.Description>
