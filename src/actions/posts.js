@@ -5,6 +5,8 @@ export const NEW_POST = 'NEW_POST'
 export const DELETE_POST = 'DELETE_POST'
 export const EDIT_POST = 'EDIT_POST'
 export const UDPATE_COMMENT_POST = 'UDPATE_COMMENT_POST'
+export const ADD_COMMENT_POST = 'ADD_COMMENT_POST'
+export const ADD_COMMENTS = 'ADD_COMMENTS'
 
 export function receivePosts(posts) {
   return {
@@ -48,6 +50,12 @@ export function editPost(post) {
 export function removeCommentPost(post) {
   return {
     type: UDPATE_COMMENT_POST,
+    post,
+  }
+}
+export function addCommentPost(post) {
+  return {
+    type: ADD_COMMENT_POST,
     post,
   }
 }

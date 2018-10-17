@@ -9,7 +9,8 @@ import { connect } from 'react-redux'
 import Post from './Post'
 import Comments from './Comments'
 import { handleCommentById, handleDeletePost } from '../actions/shared'
-import { Label, Grid, Container, Header } from 'semantic-ui-react'
+import { Label, Grid, Container } from 'semantic-ui-react'
+// import { Link, Route } from 'react-router-dom'
 
 class Page extends Component {
   state = {

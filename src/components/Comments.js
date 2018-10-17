@@ -5,13 +5,12 @@
  * Distributed under terms of the MIT license.
  */
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { Label, Segment, List, Icon } from 'semantic-ui-react'
 import { formatDate } from '../utils/helpers'
 import ScoreButton from './ScoreButton'
 import { connect } from 'react-redux'
 // actions
-// import { incrementComment, decrementComment } from '../actions/comments'
 import { handleDeleteComment, handleIncrementComment, handleDecrementComment } from '../actions/shared'
 
 class Comments extends Component {
@@ -32,8 +31,9 @@ class Comments extends Component {
     const { dispatch, obj } = this.props
     dispatch(handleDecrementComment(obj.id, obj))
   }
+  // handleAddComment
   render() {
-    const { obj } = this.props// comment
+    const { obj, post } = this.props// comment
     return (
       <Segment compact style={{ minWidth: '60%' }} >
         <Label as="a" ribbon="right">
@@ -50,9 +50,12 @@ class Comments extends Component {
           idPost={obj.id}
           increment={this.increment}
         />
-        <List className="iconsGroup horizontal" style={{ marginTop: '1rem' }}>
+        <List className="iconsGroup horizontal" style={{ marginTop: '1rem', float: 'right' }}>
           <List.Item onClick={e => this.handleEdit(e, obj.id)} >
             <Icon circular color="teal" name="edit" />
+          </List.Item>
+          <List.Item as={Link} to={`/newcomment/${post.id}/new`}>
+            <Icon circular color="orange" name="add" />
           </List.Item>
           <List.Item onClick={() => this.deleteComment(obj)}>
             <Icon circular color="red" name="delete" />

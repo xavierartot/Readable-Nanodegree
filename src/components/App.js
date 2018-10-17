@@ -34,7 +34,7 @@ class App extends Component {
             <Route component={Categories} path="/category/:category" />
             <Route component={Page} path="/page/:id" />
             <Route component={NewPost} exact path="/newpost" />
-            <Route component={NewComment} exact path="/newcomment/:id" />
+            <Route component={NewComment} path="/newcomment/:idPost/:idComment" />
             <Route component={PageNotFound} />
           </Switch>
         </Fragment>

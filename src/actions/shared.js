@@ -1,6 +1,6 @@
 import { receiveCategories } from './categories'
-import { deleteComment, incrementComment, decrementComment, receiveCommentsById } from './comments'
-import { removeCommentPost, decrementPosts, incrementPosts, editPost, receivePosts, deletePost, newPost } from './posts'
+import { addComment, deleteComment, incrementComment, decrementComment, receiveCommentsById } from './comments'
+import { addCommentPost, removeCommentPost, decrementPosts, incrementPosts, editPost, receivePosts, deletePost, newPost } from './posts'
 // API
 import { removeCommentPostApi, deleteCommentApi, incrementDecrementComment, incrementDecrementPost, getCommentById, editPostApi, addNewPost, getInitialData, deletePostApi } from '../utils/_api'
 
@@ -73,5 +73,11 @@ export function handleDeleteComment(comment, post) {
     dispatch(removeCommentPost(post))// in post reducer
     deleteCommentApi(comment)// api
     removeCommentPostApi(post)// api
+  }
+}
+export function handleAddComment(comment, post) {
+  return (dispatch, getState) => { // thunk pattern with redux-thunk
+    dispatch(addComment(comment, post))// in comment reducer
+    dispatch(addCommentPost(post))// in post reducer
   }
 }

@@ -1,5 +1,6 @@
-import { DELETE_COMMENTS, DECREMENT_COMMENTS, INCREMENT_COMMENTS, RECEIVE_COMMENTS } from '../actions/comments'
+import { ADD_COMMENT, DELETE_COMMENTS, DECREMENT_COMMENTS, INCREMENT_COMMENTS, RECEIVE_COMMENTS } from '../actions/comments'
 import reject from 'lodash/reject'
+import { generateUID } from '../utils/helpers'
 
 export default function comments(state = {}, action) {
   const { id, comment } = action// declaration to increment and decrement
@@ -39,6 +40,22 @@ export default function comments(state = {}, action) {
       state = Object.assign({}, updateDelete)
       console.log(state)
       return state
+    case ADD_COMMENT:
+      const size = Object.keys(state).length
+      console.log(comment, action.post)
+      const commentObj = {
+        ...comment,
+        deleted: false,
+        id: generateUID(),
+        parentDeleted: false,
+        parentId: action.post.id,
+        timestamp: Date.now(),
+        voteScore: 0,
+      }
+      return {
+        ...state,
+        [size]: Object.assign({}, commentObj),
+      }
     default: return state
   }
 }

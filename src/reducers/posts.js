@@ -6,6 +6,7 @@ import {
   DELETE_POST,
   EDIT_POST,
   UDPATE_COMMENT_POST,
+  ADD_COMMENT_POST,
 } from '../actions/posts'
 // import update from 'immutability-helper'
 import reject from 'lodash/reject'
@@ -72,6 +73,15 @@ export default function receivePosts(state = {}, action) {
         post,
       ]
       state = Object.assign({}, updateVoteComment)
+      return state
+    case ADD_COMMENT_POST:
+      const rejectsAddComment = reject(newState, o => o.id === post.id)
+      post.commentCount++
+      const addCommentcount = [
+        ...rejectsAddComment,
+        post,
+      ]
+      state = Object.assign({}, addCommentcount)
       return state
     default: return state
   }
