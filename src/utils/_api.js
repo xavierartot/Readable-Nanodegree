@@ -98,9 +98,23 @@ export const incrementDecrementPost = (post) => {
 }
 export const deleteCommentApi = (comment) => {
   const { deleted } = comment
+  console.log(deleted)
   fetch(`${api}/comments/${comment.id}`, {
     method: 'PUT',
-    body: JSON.stringify({ deleted }),
+    body: JSON.stringify({ deleted: true }),
+    headers: {
+      ...headers,
+    },
+  }).then(res => res)
+    .catch(err => err)
+}
+// POST /posts/:id
+export const removeCommentPostApi = (post) => {
+  const { commentCount } = post
+  console.log(post, commentCount)
+  fetch(`${api}/posts/${post.id}`, {
+    method: 'PUT',
+    body: JSON.stringify({ commentCount }),
     headers: {
       ...headers,
     },
@@ -119,6 +133,8 @@ export const incrementDecrementComment = (post) => {
   }).then(res => res)
     .catch(err => err)
 }
+
+
 export const add = comment =>
   fetch(
     `${api}/comments/${comment.id}`,

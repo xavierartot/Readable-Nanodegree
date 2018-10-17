@@ -5,6 +5,7 @@ import {
   NEW_POST,
   DELETE_POST,
   EDIT_POST,
+  UDPATE_COMMENT_POST,
 } from '../actions/posts'
 // import update from 'immutability-helper'
 import reject from 'lodash/reject'
@@ -12,7 +13,8 @@ import reject from 'lodash/reject'
 export default function receivePosts(state = {}, action) {
   const { idPost, post } = action// declaration to increment and decrement
   const newState = state// declaration to increment and decrement
-  let size
+  let size,
+    rejects
   switch (action.type) {
     case RECEIVE_POSTS:
       return {
@@ -49,13 +51,11 @@ export default function receivePosts(state = {}, action) {
       }
       return state
     case DELETE_POST:
-      const rejects = reject(state, o => o.id === action.id)
+      rejects = reject(state, o => o.id === action.id)
       // console.log(rejects)
       state = rejects
       return state
     case EDIT_POST:
-      // console.log(state, action.post)
-      // console.log(action.post.id)
       const rejectEditPost = reject(state, o => o.id === action.post.id)
       const postEdit = action.post
       size = Object.keys(state).length
@@ -63,6 +63,15 @@ export default function receivePosts(state = {}, action) {
         ...rejectEditPost,
         [size]: postEdit,
       }
+      return state
+    case UDPATE_COMMENT_POST:// decrement a comment in post
+      const rejectsComment = reject(newState, o => o.id === post.id)
+      post.commentCount--
+      const updateVoteComment = [
+        ...rejectsComment,
+        post,
+      ]
+      state = Object.assign({}, updateVoteComment)
       return state
     default: return state
   }

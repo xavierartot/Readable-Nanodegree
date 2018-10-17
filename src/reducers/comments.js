@@ -30,7 +30,6 @@ export default function comments(state = {}, action) {
       state = Object.assign({}, updateVoteDecrement)
       return state
     case DELETE_COMMENTS:
-      const { deleted } = action.comment
       const rejectsDeleted = reject(state, o => o.id === comment.id)
       const c = { ...comment, deleted: true }
       const updateDelete = [

@@ -5,7 +5,8 @@
  * Distributed under terms of the MIT license.
  */
 import React, { Component } from 'react'
-import { Segment, List, Icon } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom'
+import { Label, Segment, List, Icon } from 'semantic-ui-react'
 import { formatDate } from '../utils/helpers'
 import ScoreButton from './ScoreButton'
 import { connect } from 'react-redux'
@@ -14,13 +15,14 @@ import { connect } from 'react-redux'
 import { handleDeleteComment, handleIncrementComment, handleDecrementComment } from '../actions/shared'
 
 class Comments extends Component {
-  handleEdit = (event) => {
+  handleEdit = (event, id) => {
     // const { dispatch, obj } = this.props
     event.preventDefault()
+    this.props.history.push({ pathname: `/newcomment/${id}` })
   }
   deleteComment = (obj) => {
-    const { dispatch } = this.props
-    dispatch(handleDeleteComment(obj))
+    const { dispatch, post } = this.props
+    dispatch(handleDeleteComment(obj, post))
   }
   increment = () => {
     const { dispatch, obj } = this.props
@@ -34,9 +36,12 @@ class Comments extends Component {
     const { obj } = this.props// comment
     return (
       <Segment compact style={{ minWidth: '60%' }} >
-        <div className="header ui">
-          {obj.author}
-        </div>
+        <Label as="a" ribbon="right">
+          Update
+        </Label>
+        <p>
+          <Label as="a" content={obj.author} icon="user" />
+        </p>
         <p>{obj.body}</p>
         <p> created {formatDate(obj.timestamp)}</p>
         <ScoreButton
@@ -46,9 +51,6 @@ class Comments extends Component {
           increment={this.increment}
         />
         <List className="iconsGroup horizontal" style={{ marginTop: '1rem' }}>
-          <List.Item onClick={this.add}>
-            <Icon circular color="pink" name="user" />
-          </List.Item>
           <List.Item onClick={e => this.handleEdit(e, obj.id)} >
             <Icon circular color="teal" name="edit" />
           </List.Item>
@@ -60,5 +62,5 @@ class Comments extends Component {
     )
   }
 }
-export default connect()(Comments)
+export default withRouter(connect()(Comments))
 

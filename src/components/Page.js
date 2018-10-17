@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import Post from './Post'
 import Comments from './Comments'
 import { handleCommentById, handleDeletePost } from '../actions/shared'
-import { Grid, Container, Header } from 'semantic-ui-react'
+import { Label, Grid, Container, Header } from 'semantic-ui-react'
 
 class Page extends Component {
   state = {
@@ -33,19 +33,20 @@ class Page extends Component {
        >
          <Grid.Row >
            <Container>
-             <Header as="h1">Comments</Header>
+             <Label color="red" pointing="below" size="huge">Post</Label>
              <Post
                key={postObj.id}
                center="centered"
                deletePost={this.handleDelete}
                post={postObj}
              />
+             <Label color="red" pointing="below" size="huge">Comments</Label>
              <div className="ui grid centered">
                <Grid.Column className="containerCenter">
-                 {comments.length > 0
-             ? comments.map(comment => (<Comments key={comment.id} obj={comment} />))
-          : 'no comments'
-          }
+                 {comments.length >= 0
+                 ? comments.map(comment => (<Comments key={comment.id} obj={comment} post={postObj} />))
+                 : 'no comments'
+                 }
                </Grid.Column>
              </div>
            </Container>
@@ -58,11 +59,10 @@ function mapStateToProps({ posts, comments }, { location, match }) {
   const { id } = match.params
   const post = Object.values(posts).filter(e => e.id === id)
   const postObj = Object.assign({}, ...post)// get the post
-  console.log(comments)
-
+  // console.log(comments)
   return {
     postObj,
-    comments: Object.values(comments),
+    comments: Object.values(comments).filter(e => e.deleted === false),
   }
 }
 export default connect(mapStateToProps)(Page)
