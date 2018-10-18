@@ -1,12 +1,17 @@
-# Overview Projec
+# Readable Projec
 
-This project is created for assessment in Udacity's nanodegree React and Redux course.
+This project is optional project for Udacity's React nanodegree.
 It's a classic CRUD app.
 
 * Home Page
-  * shows posts
-* Create post
-* Add Post
+  * shows posts and Comment
+* Create posts and Comments
+* Add Posts and Comments
+* Delete Posts and Comments
+* Update Posts and Comments
+
+## Technologies
+* React 16, Redux, Semantic-ui-react, React Router 4, Node(server)
 
 ## Installation
 
@@ -16,9 +21,6 @@ It's a classic CRUD app.
 
 ## Backend Server
 Currently `_api.js` file is used to use the server.
-
-## deployment on Github
-working: https://github.com/gitname/react-gh-pages
 
 ## License
 MIT License: https://xavierartot.mit-license.org/@2018/
