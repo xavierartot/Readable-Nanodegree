@@ -4,6 +4,7 @@ export const ADD_COMMENT = 'ADD_COMMENT'
 export const INCREMENT_COMMENTS = 'INCREMENT_COMMENTS'
 export const DECREMENT_COMMENTS = 'DECREMENT_COMMENTS'
 export const DELETE_COMMENTS = 'DELETE_COMMENTS'
+export const UPDATE_COMMENT = 'UPDATE_COMMENT'
 
 export function receiveCommentsById(comments) {
   return {
@@ -42,5 +43,12 @@ export function addComment(comment, post) {
     type: ADD_COMMENT,
     comment,
     post,
+  }
+}
+export function updateComment(id, comment) {
+  return {
+    type: UPDATE_COMMENT,
+    id,
+    comment,
   }
 }

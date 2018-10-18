@@ -14,11 +14,6 @@ import { connect } from 'react-redux'
 import { handleDeleteComment, handleIncrementComment, handleDecrementComment } from '../actions/shared'
 
 class Comments extends Component {
-  handleEdit = (event, id) => {
-    // const { dispatch, obj } = this.props
-    event.preventDefault()
-    this.props.history.push({ pathname: `/newcomment/${id}` })
-  }
   deleteComment = (obj) => {
     const { dispatch, post } = this.props
     dispatch(handleDeleteComment(obj, post))
@@ -51,7 +46,7 @@ class Comments extends Component {
           increment={this.increment}
         />
         <List className="iconsGroup horizontal" style={{ marginTop: '1rem', float: 'right' }}>
-          <List.Item onClick={e => this.handleEdit(e, obj.id)} >
+          <List.Item as={Link} to={`/newcomment/${post.id}/${obj.id}`}>
             <Icon circular color="teal" name="edit" />
           </List.Item>
           <List.Item as={Link} to={`/newcomment/${post.id}/new`}>

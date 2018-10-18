@@ -84,7 +84,32 @@ export const editPostApi = (post) => {
     },
   }).then(res => res)
 }
-
+export const updateCommentApi = (comment) => {
+  const { body, author } = comment
+  fetch(`${api}/comments/${comment.id}`, {
+    method: 'PUT',
+    headers: {
+      ...headers,
+    },
+    body: JSON.stringify({ body, author }),
+  }).then(res => res.json())
+}
+// id: Any unique ID. As with posts, UUID is probably the best here.
+// timestamp: timestamp. Get this however you want.
+// body: String
+// author: String
+// parentId: Should match a post id in the database.
+export const addNewCommentApi = (comment) => {
+  console.log(comment)
+  fetch(`${api}/comments`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+    },
+    body: JSON.stringify(comment),
+  })
+    .catch(err => console.log(err))
+}
 export const incrementDecrementPost = (post) => {
   const { voteScore } = post
   fetch(`${api}/posts/${post.id}`, {
@@ -134,17 +159,6 @@ export const incrementDecrementComment = (post) => {
     .catch(err => err)
 }
 
-
-export const add = comment =>
-  fetch(
-    `${api}/comments/${comment.id}`,
-    {
-      method: 'POST',
-      headers,
-    },
-  )
-    .then(res => res.json())
-    .catch(err => console.log(err))
 
 export const update = (comment, shelf) =>
   fetch(`${api}/books/${comment.id}`, {

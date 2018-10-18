@@ -1,4 +1,4 @@
-import { ADD_COMMENT, DELETE_COMMENTS, DECREMENT_COMMENTS, INCREMENT_COMMENTS, RECEIVE_COMMENTS } from '../actions/comments'
+import { UPDATE_COMMENT, ADD_COMMENT, DELETE_COMMENTS, DECREMENT_COMMENTS, INCREMENT_COMMENTS, RECEIVE_COMMENTS } from '../actions/comments'
 import reject from 'lodash/reject'
 import { generateUID } from '../utils/helpers'
 
@@ -38,7 +38,6 @@ export default function comments(state = {}, action) {
         c,
       ]
       state = Object.assign({}, updateDelete)
-      console.log(state)
       return state
     case ADD_COMMENT:
       const size = Object.keys(state).length
@@ -55,6 +54,29 @@ export default function comments(state = {}, action) {
       return {
         ...state,
         [size]: Object.assign({}, commentObj),
+      }
+    case UPDATE_COMMENT:
+      // console.log(action)
+      const rejectsComment = reject(state, o => o.id === comment.id)
+      console.log(action.id, comment, rejectsComment)
+      const commentUpdateObj = {
+        ...comment,
+        deleted: false,
+        id: generateUID(),
+        parentDeleted: false,
+        parentId: action.id,
+        timestamp: Date.now(),
+        voteScore: 0,
+      }
+      const updateComment = [
+        ...rejectsComment,
+        commentUpdateObj,
+      ]
+      console.log(updateComment)
+      state = Object.assign({}, updateComment)
+      console.log(state)
+      return {
+        updateComment,
       }
     default: return state
   }

@@ -1,8 +1,11 @@
 import { receiveCategories } from './categories'
-import { addComment, deleteComment, incrementComment, decrementComment, receiveCommentsById } from './comments'
+import { updateComment, addComment, deleteComment, incrementComment, decrementComment, receiveCommentsById } from './comments'
 import { addCommentPost, removeCommentPost, decrementPosts, incrementPosts, editPost, receivePosts, deletePost, newPost } from './posts'
+
 // API
-import { removeCommentPostApi, deleteCommentApi, incrementDecrementComment, incrementDecrementPost, getCommentById, editPostApi, addNewPost, getInitialData, deletePostApi } from '../utils/_api'
+import { addNewCommentApi, updateCommentApi, removeCommentPostApi, deleteCommentApi, incrementDecrementComment, incrementDecrementPost, getCommentById, editPostApi, addNewPost, getInitialData, deletePostApi } from '../utils/_api'
+
+import { generateUID } from '../utils/helpers'
 
 export function handleInitialData() { // middleware thunk
   return (dispatch, getState) => { // thunk pattern with redux-thunk
@@ -75,9 +78,31 @@ export function handleDeleteComment(comment, post) {
     removeCommentPostApi(post)// api
   }
 }
+export function handleUpdateComment(idPost, comment) {
+  return (dispatch, getState) => { // thunk pattern with redux-thunk
+    dispatch(updateComment(idPost, comment))// in comment reducer
+    // todo: api...
+    console.log(comment)
+    updateCommentApi(comment)
+  }
+}
+
 export function handleAddComment(comment, post) {
   return (dispatch, getState) => { // thunk pattern with redux-thunk
     dispatch(addComment(comment, post))// in comment reducer
     dispatch(addCommentPost(post))// in post reducer
+
+    // todo: api...
+    const commentObj = {
+      ...comment,
+      deleted: false,
+      id: generateUID(),
+      parentDeleted: false,
+      parentId: post.id,
+      timestamp: Date.now(),
+      voteScore: 0,
+    }
+    addNewCommentApi(commentObj)
   }
 }
+
