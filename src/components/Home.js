@@ -23,19 +23,18 @@ class Home extends Component {
      this.props.dispatch(handleDeletePost(id))
    }
   sortDate = (postSorted) => {
-    const sort = sortBy(postSorted, postSorted.timestamp)
     this.state.toggleDate === true
       ? this.setState(() => ({
-        posts: sort,
+        posts: postSorted.sort((b, a) => a.timestamp - b.timestamp),
         toggleDate: false,
       }))
       : this.setState(() => ({
-        posts: sort.reverse(),
+        posts: postSorted.sort((b, a) => b.timestamp - a.timestamp),
         toggleDate: true,
       }))
   }
   voteScore = (postSorted) => {
-    // https://stackoverflow.com/questions/15137948/how-can-i-do-an-asc-and-desc-sort-using-underscore-js
+    // https://stackoverflow.com/questions/15137948/how-can-i-do-an-asc-and-desc-sort-using-underscore-js with negative number
     const sort = sortBy(postSorted, num => -num.voteScore)
     this.state.toggleScore === true
       ? this.setState(() => ({
