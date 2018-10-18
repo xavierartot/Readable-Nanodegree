@@ -162,7 +162,6 @@ class NewPost extends Component {
             <div className="field">
               <label htmlFor="author">Author</label>
               <input
-                disabled
                 id="author"
                 onChange={e => this.handleChange(e, 'author')}
                 placeholder="Enter Author"
@@ -175,7 +174,6 @@ class NewPost extends Component {
               <label htmlFor="category">Choose a category</label>
               <select
                 className="ui fluid dropdown"
-                disabled
                 id="category"
                 onChange={e => this.handleChange(e, 'category')}
                 value={post.category}
