@@ -1,4 +1,4 @@
-# Readable Projec
+# Readable Project Udacity's React Nanodegree
 
 This project is optional project for Udacity's React nanodegree.
 It's a classic CRUD app.
