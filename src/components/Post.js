@@ -47,7 +47,7 @@ class Post extends Component {
           <Card.Content extra>
             <Link
               to={{
-                pathname: `/page/${post.category}`,
+                pathname: `/category/${post.category}`,
                 search: `?id=${post.id}`,
               }}
             >
