@@ -1,4 +1,4 @@
-# Readable Project Udacity's React Nanodegree
+# Projet final pour l'obtention d'un Nanodegree ches Google.com - Readable Project Udacity's React Nanodegree
 
 This project is optional project for Udacity's React nanodegree.
 It's a classic CRUD app.
